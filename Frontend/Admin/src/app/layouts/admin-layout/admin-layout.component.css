@@ -1,0 +1,51 @@
+
+
+
+.navbar{
+	background: linear-gradient(157deg, #1F1F1F 0%, #94bbe9 100%);
+	
+	
+	
+}
+.navbar-nav li{ 
+	transition: box-shadow 1s ease-out 1ms;
+}
+
+
+.navbar-nav li:hover{
+	background: linear-gradient(157deg, #9a9a9a 0%, #eec5ae 100%);
+	border-radius: 20px 5px;
+	
+}
+
+/* Bootstrap Classes */
+
+.li-admin-nav{
+	transition: box-shadow 1s ease-out 1ms;
+	border-radius: 20px 5px;
+}
+.li-admin-nav:hover{
+	color: #ffff !important;
+	box-shadow: 7px 5px 15px 6px #7291A6;
+	border-radius: 20px 5px;
+	/* animation: hoverAnimation 1s linear 1s 2; */
+	
+
+}
+
+
+
+/* @keyframes hoverAnimation {
+	0% {
+		transform: translate(0) rotate(0deg);
+		
+
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-400px,-800px) rotate(360deg);
+		
+		opacity: 0;
+	}
+} */
+
