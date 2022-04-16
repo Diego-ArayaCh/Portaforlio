@@ -11,7 +11,11 @@ import { StartComponent } from './start/start.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+ 
+  ],
+  providers: [
+    
   ]
 })
 export class AdminModule { }

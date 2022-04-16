@@ -29,35 +29,34 @@ module.exports.signin = async (req, res, next) => {
   const user = await UserModel.findOne({ username: username }).exec();
 
   if (!user) {
-      
+
       res.json({ success: false, msg: 'Authentication failed. User not found.' });
-  } 
-  
-  if (user.estado == 0) {
-    res.json({ success: false, msg: 'Authentication failed. User is inactive.' });
   }else{
+    user.comparePassword(pwd, user.pwd, function (err, isMatch) {
+      if (isMatch && !err) {
+        // Si el usuario es correcto y la contraseña coindice se procede a crear el token
+        const token = jwt.sign(
+          { username: username },
+          config,
+          { expiresIn: "2h" }
+        );
+        // return the information including token as JSON
+        const payload = { user: user.username, _id: user._id };
+        res.json({ success: true, token: token, user: payload });
+      } else {
+          //si la contraseña no coincide se procede a indicar el error
+          //res.status(401).send({ success: false, msg: 'Authentication failed. Wrong password.' });
+          res.json({ success: false, msg: 'Authentication failed. Wrong password.' });
+      }
+  });
+  }
+  
+  
       
       //Si el usuario existe verifica si las contraseñas
       
-      user.comparePassword(pwd, user.pwd, function (err, isMatch) {
-          if (isMatch && !err) {
-            // Si el usuario es correcto y la contraseña coindice se procede a crear el token
-            const token = jwt.sign(
-              { username: username },
-              config,
-              { expiresIn: "2h" }
-            );
-            // return the information including token as JSON
-            const payload = { user: user.username, _id: user._id };
-            res.json({ success: true, token: token, user: payload });
-          } else {
-              //si la contraseña no coincide se procede a indicar el error
-              //res.status(401).send({ success: false, msg: 'Authentication failed. Wrong password.' });
-              res.json({ success: false, msg: 'Authentication failed. Wrong password.' });
-          }
-      });
+   
   }
-};
 
 module.exports.get = async (req, res, next) => {
     
