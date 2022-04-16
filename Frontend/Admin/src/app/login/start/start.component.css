@@ -16,7 +16,7 @@
 }
 /* bootstrap classes */
 .card{
-    background-color: #303030d0;
+    background-color: var(--space-color);
     color: #fff
 }
 .btn-primary{

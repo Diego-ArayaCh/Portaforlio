@@ -31,12 +31,8 @@ export class AdminGuard implements CanActivate {
       this.router.navigate(['/sign-in']);
       return false;
     } else {
-      if (this.tokenStorageService.getUser().roles == 1) {
-        return true
-      } else {
-        this.router.navigate(['/sign-in']);
-        return false
-      }
+      
+      return true;
 
     }
   }

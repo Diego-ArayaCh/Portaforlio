@@ -17,7 +17,7 @@ app.use(
 app.use(cors());
 app.use(logger("dev"));
 //routes------------------------------------------------------------------------------------------------
-
+app.use('/api/user', require('./routes/user'));
 
 
 
