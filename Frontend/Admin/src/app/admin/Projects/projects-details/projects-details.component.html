@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <h1 class="page-header">Details of project</h1>
+      
+        <div >
+            <div  *ngIf="project != null">
+                <h2 class="title">{{project.title}}</h2>
+                <ul class="links">
+                    <li class="demoLink"> <a target="_blank" href="{{project.demoLink}}">Demo</a></li>
+                    <li class="repoLink"><a target="_blank" href="{{project.repoLink}}">Repository</a></li>
+                </ul>
+               <p>{{project.shortDescription}}</p>
+               
+                <img class="image"   src="{{project.image}}" alt="">
+            </div>
+           
+          
+            <div id="content">
+      
+            </div>
+
+        </div>
+      
+    </div>
+</div>
+<div class="btn-parent">
+    <a type="button"  class="btn btn-modal btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       <img width="64px" height="64px" src="../../../../assets/images/plus.png" alt="">
+      </a>
+      
+</div>
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+            <div  *ngIf="project != null" class="actions position-relative">
+                <button type="button" class="btn-close bg-light position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3>Actions</h3>
+                <ul class="buttons-actions ">
+                    <li><button class=" btn btn-primary">Update</button></li>
+                    <li *ngIf="project.state==1"><button (click)="changeState(0)" class=" btn btn-danger" >Disable</button></li>
+                    <li *ngIf="project.state==0"><button (click)="changeState(1)" class=" btn btn-success" >Enable</button></li>
+                </ul>
+                
+                
+            </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>

@@ -8,7 +8,7 @@ import {
   import { Injectable } from '@angular/core';
   import { Observable } from 'rxjs';
   import { TokenStorageService } from '../services/token-storage.service';
-  
+  import Swal from 'sweetalert2'
   const TOKEN_HEADER_KEY = 'x-access-token'; // for Spring Boot back-end
   
   @Injectable()
@@ -22,12 +22,14 @@ import {
       let authReq = req;
       const token = this.token.getToken();
   
-      //console.log('Token: ' + token);
+      console.log('Token: ' + token);
   
       if (token != null) {
         authReq = req.clone({
           headers: req.headers.set(TOKEN_HEADER_KEY, token),
         });
+      }else{
+        
       }
 
       

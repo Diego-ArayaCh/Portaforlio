@@ -1,0 +1,41 @@
+<div class="container">
+    <ul class="cards row">
+
+      <li class="col-lg-3 col-md-6 col-sm-12">
+        <a routerLink='/admin/projects/create' class="card new">
+          <img src="http://localhost:8080/public/noimage.jpg" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header new">
+                        
+             
+              <div class="card__header-text">
+                <h3 class="card__title">Create a new</h3>
+                
+              </div>          
+            </div>
+            <p class="card__description">Create a new project to portfolio</p>
+          </div>
+        </a>
+      </li>    
+      
+      <li *ngFor="let project of projectsArray" class=" col-lg-3 col-md-6 col-sm-12 ">
+        <a routerLink='/admin/projects/details/{{project._id}}'class="card">
+          <img src='{{project.image}}' class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+                                
+              
+              <div class="card__header-text">
+                <h3  class="card__title">{{project.title}}</h3>            
+                <span class="card__status">({{(project.state == 1)?"Enabled":"Disabled"}})</span>
+              </div>
+            </div>
+            <p class="card__description">{{project.shortDescription}}</p>
+          </div>
+        </a>
+      </li>
+       
+     
+      </ul>
+</div>
+

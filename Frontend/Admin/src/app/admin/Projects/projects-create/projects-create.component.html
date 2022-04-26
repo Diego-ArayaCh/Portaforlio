@@ -1,0 +1,54 @@
+    <h1 class="page-header">Create a new Project</h1>
+    <div class="container">
+      <form [formGroup]="formProject" (ngSubmit)="save()" class="file" enctype="multipart/form-data">
+        <div class="row">
+          <h2 class="page-subheader">Basic Information</h2>
+          <div class="col-md-6 col-sm-12">
+            <label>Write a short title for the project</label>
+            <input type="text" class="form-control" formControlName="title">
+
+
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label>Write a summary for the project</label>
+            <input type="text" class="form-control" formControlName="shortDescription">
+
+
+          </div>
+        </div>
+
+
+        <div>
+          <label>Choose the main image</label>
+          <input accept=".jpeg,.jpg ,.png" neg class="form-control" type="file" (change)="onFileSelected($event)"
+            name="image">
+        </div>
+
+        <div class="row">
+          <h2 class="page-subheader">Links</h2>
+          <div class="col-md-6 col-sm-12">
+            <label>Demo Link</label>
+            <input type="text" class="form-control" formControlName="demoLink">
+
+
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label>Repository Link</label>
+            <input type="text" class="form-control" formControlName="repoLink">
+
+
+          </div>
+        </div>
+        <div>
+          <h2 class="page-subheader">Main Content</h2>
+          <label>Write the content of the project</label>
+          <ckeditor formControlName="content">
+
+          </ckeditor>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">
+          create
+        </button>
+      </form>
+
+    </div>

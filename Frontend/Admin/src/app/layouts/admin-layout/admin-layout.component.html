@@ -2,8 +2,8 @@
   <div class="row vh-100 overflow-auto">
     <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 nav-style d-flex sticky-top">
       <div
-        class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3  text-white">
-        <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-white text-decoration-none">
+        class="aside-container d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3  text-white">
+        <a href="/" class="d-flex align-items-center  mb-sm-0 me-sm-auto text-white text-decoration-none">
          
          
         
@@ -20,7 +20,7 @@
           </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link px-sm-0 px-2">
+            <a  routerLink='/admin/projects' class="nav-link px-sm-0 px-2">
               <i class="fs-5 bi-window"></i><span class="ms-1 d-none d-sm-inline">Pojects</span></a>
           </li >
 		  <li class="nav-item">
@@ -47,7 +47,7 @@
             <span class="d-none d-sm-inline mx-1">Diego</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a routerLink='/admin/projects/create' class="dropdown-item" >New project...</a></li>
             <li><a class="dropdown-item" (click)="changeTheme()">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="col d-flex flex-column h-sm-100">
+    <div class="  col d-flex flex-column col-12 col-sm-9 col-xl-10  h-md-100 h-sm-100 h-xs-100">
       <main class="row overflow-auto">
         <router-outlet></router-outlet>
       </main>

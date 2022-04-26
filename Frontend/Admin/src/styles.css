@@ -2,8 +2,12 @@
     --orange-color: #FC8019;
     /* --blue-color: #007A7A; */
     --blue-color: #94bbe9;
-    --space-color: #000000d0;
-    --gray-color: #93959F;
+    --space-color: #3e454e;
+    --gray-color: #8f8f8f;
     --white-color: #ffffff;
+    --surface-color: var(--white-color);
+    --curve: 40;
+    overflow: hidden;
 }
+
 
