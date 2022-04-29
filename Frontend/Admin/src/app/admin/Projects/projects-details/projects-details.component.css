@@ -2,17 +2,23 @@
     margin:0 auto;
     width: 100%;
     height: 100%;
-    background-color: var(--space-color);
+    background-color: #00000065;
+   
    color: var(--white-color);
    padding: 5px;
-   border-radius: 10px;
-   box-shadow: 10px 10px 10px rgba(30, 30, 30, 0.769); 
+   border-radius: 10px 0 10px 10px;
+   box-shadow: 10px 10px 10px #1e1e1ec4; 
    display: inline-block;
-}
-.actions{
+   text-align: center;
+
+  
+  
    
-    text-align: center;
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(2px);
+
 }
+
 .buttons-actions{
     padding: 0;
 }
@@ -26,39 +32,49 @@
     display: inline-block;
     list-style-type: none;
     margin: .30rem;
-    border-radius: 10px;
-    box-shadow: 10px 10px 10px gray; 
+    border-radius: 40px;
+    box-shadow: 5px 5px 5px rgba(117, 117, 117, 0.785); 
    
     
 }
 .links{
-    padding:0;
+    padding: 0;
+    align-items: center;
+   text-align: center;
+
 }
 .links>li>a{
     
     
   text-decoration: none;
    color: var(--white-color);
-   padding: 5px;
+   padding: 10px;
    border-radius: 10px;
    
 }
 .links>li{
     transition: all 0.5s;
+    padding: 10px;
+  
 }
 .links>li:hover{
     background-color: var(--gray-color);
     color: var(--white-color);
     box-shadow: none; 
 }
-
+.container-links{
+    margin-top: 20px;
+}
 .image{
     width: 100%;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgb(35, 35, 35); 
+    margin-bottom: 5%;
 }
 
 .demoLink{
-    background-color: var(--blue-color);
+    background-color: var(--orange-color);
 }
 .repoLink{
     background-color: var(--space-color);
@@ -124,10 +140,11 @@
 	right: 40px;
     z-index: 99;
     padding: 10px;
-    border-radius: 100px;
+    border-radius: 100px 0 100px 0;
     background-color: var(--space-color);
     border: none;
     transition: all 500ms;
+    box-shadow: 10px 10px 10px rgb(35, 35, 35); 
 }
 .btn-modal:hover{
     background-color: rgba(0, 0, 0, 0.395);
