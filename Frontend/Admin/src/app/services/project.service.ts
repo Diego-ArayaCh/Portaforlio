@@ -33,9 +33,9 @@ export class ProjectService {
 
     return this.http.post(`${API_ENDPOINT}/create-project/`,project);
   }
-  saveImage( file: any, id:string): Observable<any> {
+  saveImage( file: any, id:string, change:boolean): Observable<any> {
 
-    return this.http.put(`${API_ENDPOINT}/save-image/${id}`,file);
+    return this.http.put(`${API_ENDPOINT}/save-image/${id}/${change}`,file);
   }
   delete(id: string, project: any): Observable<any> {
     return this.http.put(`${API_ENDPOINT}/delete-project/${id}`,project);

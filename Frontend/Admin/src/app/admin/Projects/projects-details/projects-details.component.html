@@ -5,11 +5,16 @@
         <div >
             <div  *ngIf="project != null">
                 <h2 class="title">{{project.title}}</h2>
-                <ul class="links">
-                    <li class="demoLink"> <a target="_blank" href="{{project.demoLink}}">Demo</a></li>
-                    <li class="repoLink"><a target="_blank" href="{{project.repoLink}}">Repository</a></li>
-                </ul>
-               <p>{{project.shortDescription}}</p>
+                <p>{{project.shortDescription}}</p>
+                <div class="container-links col-sm-12 col-md-6 col-lg-3">
+                  
+                    <ul class="links">
+                        <li *ngIf="project.demoLink" class="demoLink"> <a target="_blank" href="{{project.demoLink}}">Demo</a></li>
+                        <li class="repoLink"><a target="_blank" href="{{project.repoLink}}">Repository</a></li>
+                    </ul>
+                </div>
+              
+            
                
                 <img class="image"   src="{{project.image}}" alt="">
             </div>
@@ -40,8 +45,8 @@
             <div  *ngIf="project != null" class="actions position-relative">
                 <button type="button" class="btn-close bg-light position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h3>Actions</h3>
-                <ul class="buttons-actions ">
-                    <li><button class=" btn btn-primary">Update</button></li>
+                <ul class="buttons-actions">
+                    <li><button routerLink="/admin/projects/update/{{project._id}}" data-bs-dismiss="modal" class=" btn btn-light">Update</button></li>
                     <li *ngIf="project.state==1"><button (click)="changeState(0)" class=" btn btn-danger" >Disable</button></li>
                     <li *ngIf="project.state==0"><button (click)="changeState(1)" class=" btn btn-success" >Enable</button></li>
                 </ul>

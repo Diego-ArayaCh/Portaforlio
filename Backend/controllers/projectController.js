@@ -39,21 +39,27 @@ var Project = new ProjectModel({ title, shortDescription,  image, content, repoL
   module.exports.saveImage = async (req, res, next) => {
 
     
-
+let change = await req.params.change
     host = process.env.HOST
    port = process.env.PORT
-var image= `${host}:${port}/public/${req.file.filename}` 
+
     
+    
+   if(change == "true" && req.file){
+    var image= `${host}:${port}/public/${req.file.filename}` 
+    var project;
+     project = await ProjectModel.findOneAndUpdate(
+      
+      { _id: req.params.id },
+      {   image }, // ==> {title: title, body: body}
+      { new: true } // return the register that was updated
+    );
+   }else{
+      project = await ProjectModel.findById(req.params.id);
+   }   
+   
     
       
-    const project = await ProjectModel.findOneAndUpdate(
-      
-        { _id: req.params.id },
-        {   image }, // ==> {title: title, body: body}
-        { new: true } // return the register that was updated
-      );
-    
-      console.log(project.image)
       res.json(project);
     
     
@@ -65,14 +71,14 @@ module.exports.update = async (req, res, next) => {
 
 
 
-var { title, shortDescription, image, content, repoLink, demoLink } = req.body;
+var { title, shortDescription, content, repoLink, demoLink } = req.body;
 
 
   
 const project = await ProjectModel.findOneAndUpdate(
   
     { _id: req.params.id },
-    {  title, shortDescription, image, content, repoLink, demoLink }, // ==> {title: title, body: body}
+    {  title, shortDescription, content, repoLink, demoLink }, // ==> {title: title, body: body}
     { new: true } // return the register that was updated
   );
 

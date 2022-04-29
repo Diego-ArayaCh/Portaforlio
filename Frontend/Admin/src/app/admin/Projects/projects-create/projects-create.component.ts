@@ -54,7 +54,7 @@ export class ProjectsCreateComponent implements OnInit {
             console.log(data._id)
 
 
-            this._projectService.saveImage(file, data._id).subscribe({
+            this._projectService.saveImage(file, data._id,false).subscribe({
               next: (data) => {
               },
               error: (e) => {

@@ -11,7 +11,7 @@ router.post("/create-project",auth ,projectController.create);
 
 router.put("/update-project/:id",auth, projectController.update);
 router.put("/state-change/:id",auth, projectController.state);
-router.put("/save-image/:id",auth, deleteOldImage, multer.single('file'), projectController.saveImage);
+router.put("/save-image/:id/:change",auth, deleteOldImage, multer.single('file'), projectController.saveImage);
 
 router.put('/delete-project/:id',auth, projectController.delete);
 

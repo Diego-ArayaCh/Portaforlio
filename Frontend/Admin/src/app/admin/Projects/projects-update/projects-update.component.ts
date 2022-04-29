@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class ProjectsUpdateComponent implements OnInit {
   images: any;
-
+   id:any;
+   change:boolean = false;
   formProject = new FormGroup({
     title: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
@@ -22,23 +24,44 @@ export class ProjectsUpdateComponent implements OnInit {
 
   });
   ckeditorContent = "<h1 style='align: center' >Hello</h1>";
-  constructor(private _projectService: ProjectService) { }
+  constructor(private _projectService: ProjectService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.formProject.get('content')!.setValue("")
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.loadContent()
   }
 
-  
+  loadContent () {
+    let id = 
+    this._projectService.getById(this.id).subscribe({
+      next: async (data) => {
+      
+        this.formProject.get('title')!.setValue(data.title)
+        this.formProject.get('content')!.setValue(data.content)
+        this.formProject.get('shortDescription')!.setValue(data.shortDescription)
+        this.formProject.get('repoLink')!.setValue(data.repoLink)
+        this.formProject.get('demoLink')!.setValue(data.demoLink)
+    
+      
+        
+      
+        
+      },complete() {},
+      error(err) { console.log('Received an error: ' + err)}
+    });
+    
+  }
 
 
   save() {
-    if (this.formProject.valid && this.images) {
+    console.log(this.change)
+    if (this.formProject.valid) {
       var file = new FormData();
 
       var project = {
          title: this.formProject.get('title')!.value,
           shortDescription: this.formProject.get('shortDescription')!.value,
-           image: '',
             content: this.formProject.get('content')!.value,
              repoLink: this.formProject.get('repoLink')!.value,
               demoLink: this.formProject.get('demoLink')!.value }
@@ -49,16 +72,17 @@ export class ProjectsUpdateComponent implements OnInit {
       try {
 
 
-        this._projectService.create(project).subscribe({
+        this._projectService.update(this.id, project).subscribe({
           next: (data) => {
             console.log(data._id)
 
 
-            this._projectService.saveImage(file, data._id).subscribe({
+            this._projectService.saveImage(file, data._id, this.change).subscribe({
               next: (data) => {
+                
               },
               error: (e) => {
-                console.log("error")
+                console.log(e)
               },
               complete: () => console.info('complete image')
             });
@@ -74,7 +98,7 @@ export class ProjectsUpdateComponent implements OnInit {
       }
 
     } else {
-      //alerts
+      Swal.fire('Form invalid','The form is invalid','error')
 
     }
   }
@@ -85,11 +109,12 @@ export class ProjectsUpdateComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0]
       this.images = file
-     
+      this.change = true
       if (!this.images.type.split('/').includes('image')) {
         console.log(this.images.type + 'no válido')
         Swal.fire('Not supported','The type of file is not supported','error')
         this.images = null
+        this.change = false
       }
     }
   }
