@@ -43,7 +43,7 @@ let change = await req.params.change
     
     
    if(change == "true" && req.file){
-    var image= `${host}:${port}/public/${req.file.filename}` 
+    var image= `${host}/public/${req.file.filename}` 
     var contact;
      contact = await ContactModel.findOneAndUpdate(
       
