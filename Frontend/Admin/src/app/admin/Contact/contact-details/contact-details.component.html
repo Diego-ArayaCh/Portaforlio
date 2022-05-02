@@ -1,0 +1,41 @@
+<div class="container">
+    <div *ngIf="contact != null"class="row">
+        <h1 class="page-header">Details of contact</h1>
+      
+        <h2 class="title">Basic Information</h2>
+            
+                <div  class="col-md-6 col-lg-8 col-sm-12">
+                
+                    <p><strong>Name: </strong>{{contact.name}}</p>
+                    <p><strong>Last Name: </strong>{{contact.lastName}}</p>
+                    <p><strong>Email: </strong>{{contact.email}}</p>
+                    <p><strong>Phone Number: </strong>{{contact.phoneNumber}}</p>
+                    <strong>Links:</strong>
+                    <a target="_blank" href="{{contact.linkedInLink}}"><p>LinkedIn</p></a>
+                    
+                    <p><strong>Description: </strong>{{contact.description}}</p>
+                </div>
+                <div class=" col-md-6 col-lg-4 col-sm-12">
+                    <img class="image"   src="{{contact.image}}" alt="">
+                </div>
+              
+             
+              
+            
+               
+              
+            </div>
+           
+          
+           
+
+        
+      
+    </div>
+
+<div class="btn-parent">
+    <a type="button" routerLink="/admin/contact/update"   class="btn btn-update btn-primary"  >
+       <img width="64px" height="64px" src="../../../../assets/images/plus.png" alt="">
+      </a>
+      
+</div>

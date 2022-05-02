@@ -42,10 +42,10 @@ var Project = new ProjectModel({ title, shortDescription,  image, content, repoL
 let change = await req.params.change
     host = process.env.HOST
    port = process.env.PORT
-
+//these must have changed before to upload ------------------
     
     
-   if(change == "true" && req.file){
+   if( req.file){
     var image= `${host}:${port}/public/${req.file.filename}` 
     var project;
      project = await ProjectModel.findOneAndUpdate(

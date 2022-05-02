@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 @Component({
   selector: 'app-projects',
@@ -7,16 +8,20 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private _projectService: ProjectService) {
+  constructor(private _projectService: ProjectService , private router:Router) {
 
   }
   projectsArray: any[] = [];
   ngOnInit(): void {
-
+   
     this.loadCards();
+    
 
-
+  
   }
+
+
+
 
   loadCards() {
     var array: any[] = [];

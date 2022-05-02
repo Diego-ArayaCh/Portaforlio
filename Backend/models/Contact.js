@@ -13,19 +13,19 @@ const ContactSchema = new Schema({
   email: {
     type: String,
   },
-  birthDate: {
-    type: Date,
-    default: Date.now,
-  },
-  jobPhone: {
-    type: String,
-  },
-  personalPhone: {
+  phoneNumber: {
     type: String,
   },
   image: {
     type: String
+  },
+  description:{
+    type: String
+  },
+  linkedInLink: {
+    type: String
   }
+
 });
 
 

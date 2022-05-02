@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import Swal from 'sweetalert2'
 
@@ -22,7 +23,7 @@ export class ProjectsCreateComponent implements OnInit {
 
   });
   ckeditorContent = "<h1 style='align: center' >Hello</h1>";
-  constructor(private _projectService: ProjectService) { }
+  constructor(private _projectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
     this.formProject.get('content')!.setValue("")
@@ -47,7 +48,7 @@ export class ProjectsCreateComponent implements OnInit {
 
 
       try {
-
+        
 
         this._projectService.create(project).subscribe({
           next: (data) => {
@@ -56,11 +57,13 @@ export class ProjectsCreateComponent implements OnInit {
 
             this._projectService.saveImage(file, data._id,false).subscribe({
               next: (data) => {
+                this.router.navigate([`/admin` ])
               },
               error: (e) => {
                 console.log("error")
               },
-              complete: () => console.info('complete image')
+              complete: () => Swal.fire('Project Saved','The project has been saved','success')
+              
             });
           },
           error: (e) => {

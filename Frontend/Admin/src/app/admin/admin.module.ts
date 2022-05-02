@@ -9,6 +9,8 @@ import { ProjectsComponent } from './Projects/projects-overview/projects-overvie
 import { ProjectsUpdateComponent } from './Projects/projects-update/projects-update.component';
 import { ProjectsDetailsComponent } from './Projects/projects-details/projects-details.component';
 import { ProjectsCreateComponent } from './Projects/projects-create/projects-create.component';
+import { ContactUpdateComponent } from './Contact/contact-update/contact-update.component';
+import { ContactDetailsComponent } from './Contact/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ProjectsCreateComponent } from './Projects/projects-create/projects-cre
     ProjectsComponent,
     ProjectsUpdateComponent,
     ProjectsDetailsComponent,
-    ProjectsCreateComponent
+    ProjectsCreateComponent,
+    ContactUpdateComponent,
+    ContactDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-projects-details',
@@ -13,11 +14,9 @@ export class ProjectsDetailsComponent implements OnInit {
   constructor( private _projectService: ProjectService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    
     this.loadContent();
-    if(this.project){
-
-    }
+    
     
    
   }
@@ -38,12 +37,16 @@ export class ProjectsDetailsComponent implements OnInit {
     });
     
   }
-  changeState(state:Number){
+  changeState(state:any){
     this.project.state = state
     this._projectService.changeState(this.id, this.project).subscribe({
       next: (data) => {
        
-      
+      if(state == data.state){
+        Swal.fire('State changed','The state of the project has been changed', 'success')
+      }else{
+        Swal.fire('Error','The state of project has not been changed', 'error')
+      }
         
       
         

@@ -24,7 +24,7 @@ export class ProjectsUpdateComponent implements OnInit {
 
   });
   ckeditorContent = "<h1 style='align: center' >Hello</h1>";
-  constructor(private _projectService: ProjectService, private route: ActivatedRoute) { }
+  constructor(private _projectService: ProjectService, private route: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     this.formProject.get('content')!.setValue("")
@@ -79,7 +79,7 @@ export class ProjectsUpdateComponent implements OnInit {
 
             this._projectService.saveImage(file, data._id, this.change).subscribe({
               next: (data) => {
-                
+                this.router.navigate(['/admin/projects'])
               },
               error: (e) => {
                 console.log(e)
@@ -90,7 +90,11 @@ export class ProjectsUpdateComponent implements OnInit {
           error: (e) => {
             console.log("error")
           },
-          complete: () =>  Swal.fire('Project Saved','The project has been saved','success')
+          complete: () => { Swal.fire('Project Saved','The project has been saved','success')
+        
+         
+        
+        }
         });
 
       } catch (error) {
@@ -101,6 +105,7 @@ export class ProjectsUpdateComponent implements OnInit {
       Swal.fire('Form invalid','The form is invalid','error')
 
     }
+    
   }
 
 
