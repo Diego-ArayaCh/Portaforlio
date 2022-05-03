@@ -14,9 +14,9 @@ export class ProjectsDetailsComponent implements OnInit {
   constructor( private _projectService: ProjectService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.id = this.route.snapshot.paramMap.get('id');
     this.loadContent();
-    
+   
     
    
   }
@@ -24,8 +24,8 @@ export class ProjectsDetailsComponent implements OnInit {
   
    loadContent () {
     this._projectService.getById(this.id).subscribe({
-      next: async (data) => {
-        this.project = await data
+      next:  (data) => {
+        this.project =  data
         document.getElementById('content')!.innerHTML = this.project.content;
        
       
