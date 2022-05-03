@@ -28,8 +28,8 @@ export class ProjectsComponent implements OnInit {
     
 
     this._projectService.get().subscribe({
-      next: (data) => {
-        this.projectsArray = data
+      next: async(data) => {
+        this.projectsArray = await data
         // if (data) {
         //   for (let index = 0; index < data.length; index++) {
         //     const element = data[index];
