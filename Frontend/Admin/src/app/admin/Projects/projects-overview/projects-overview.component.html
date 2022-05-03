@@ -20,6 +20,7 @@
       
       <li *ngFor="let project of projectsArray" class=" col-lg-3 col-md-6 col-sm-12 ">
         <a routerLink='/admin/projects/details/{{project._id}}'class="card">
+        
           <img src='{{project.image}}' class="card__image" alt="" />
           <div class="card__overlay">
             <div class="card__header">
