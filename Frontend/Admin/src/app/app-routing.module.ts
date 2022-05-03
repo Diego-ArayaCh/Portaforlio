@@ -13,7 +13,7 @@ const routes: Routes = [
       },
 
     //Rutas para administrador
-  {path: '' ,component: AdminLayoutComponent ,
+  {path: '' ,component: AdminLayoutComponent ,canActivate:[AdminGuard],
     children:[
           {path:'',redirectTo:'/admin-home',pathMatch:'full'},
           {path:'admin',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)}
