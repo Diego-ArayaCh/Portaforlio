@@ -1,1 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="page-header">Welcome to your dashboard</h2>
+    </div>
+    <div class="col-12" style="width: 95%;height: 100%;margin: 20px auto;">
+      <div class="bt-5 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <canvas id="myChart" #mychart></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-3 col-lg-3 col-sm-12 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">
+                  Projects</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">{{numProjects}}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-route fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-3 col-lg-3 col-sm-12 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">
+                    Visits</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">{{numVisits}}</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-route fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+
 

@@ -1,6 +1,33 @@
-.row > div{
-    word-wrap: break-word;
-white-space: pre-wrap;
-word-break: break-word;
+
+.container{
+    height: 100vh;
+}
+
+.page-header {
+    margin-top: 5%;
+  text-align: center;
+  background-color: var(--space-color-);
+  
+  color: var(--white-color);
+  
+
+
+   border-radius: 0 0  10px 10px;
+  
+   background: linear-gradient(45deg, var(--blue-color) 0%, var(--space-color) 100%);
+   background-size: 400% 400%;
+   animation: gradient 6s ease infinite;
  
+ 
+}
+@keyframes gradient {
+	0% {
+		background-position: 50% 50%;
+	}
+	50% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 50% 50%;
+	}
 }
