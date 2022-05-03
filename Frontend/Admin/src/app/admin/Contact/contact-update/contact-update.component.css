@@ -36,3 +36,6 @@ input[type=number] { -moz-appearance:textfield; }
 		background-position: 50% 50%;
 	}
 }
+form{
+  margin-bottom: 5rem
+  }

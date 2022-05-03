@@ -30,8 +30,6 @@ import { ContactDetailsComponent } from './Contact/contact-details/contact-detai
     ReactiveFormsModule
  
   ],
-  providers: [
-    
-  ]
+ 
 })
 export class AdminModule { }
