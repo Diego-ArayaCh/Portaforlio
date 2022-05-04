@@ -3,9 +3,11 @@ const connectDB = require('./database');
 const app = express();
 const chalk = require("chalk");
 const cors = require("cors");
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit:'50mb'}));
 const dotenv = require("dotenv");
 const logger = require("morgan");
-const multer = require("multer");
+
 dotenv.config();
 connectDB();
 

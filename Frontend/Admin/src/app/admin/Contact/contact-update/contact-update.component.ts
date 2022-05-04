@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from 'src/app/services/contact.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./contact-update.component.css']
 })
 export class ContactUpdateComponent implements OnInit {
-  images: any;
+  public files:any=[];
+  public preview:string='';
   contact:any;
   id:any;
   change:boolean = false;
@@ -21,9 +23,10 @@ export class ContactUpdateComponent implements OnInit {
    phoneNumber: new FormControl('', Validators.required),
    linkedInLink: new FormControl('', Validators.required),
    description: new FormControl('', Validators.required),
+   image: new FormControl('', Validators.required),
 
  });
-  constructor(private _contactService: ContactService, private route: ActivatedRoute, private router : Router) { }
+  constructor(private _contactService: ContactService, private route: ActivatedRoute, private router : Router,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     
@@ -37,17 +40,19 @@ export class ContactUpdateComponent implements OnInit {
         this.formContact.get('phoneNumber')!.setValue(this.contact.phoneNumber);
         this.formContact.get('linkedInLink')!.setValue(this.contact.linkedInLink);
         this.formContact.get('description')!.setValue(this.contact.description);
+        this.formContact.get('image')!.setValue(this.contact.description);
+        this.preview = data.image
       }
     });
     
   }
   save() {
-    console.log(this.change)
+    this.formContact.get('image')?.setValue(this.preview);
     if (this.formContact.valid) {
-      var file = new FormData();
+     
 
       
-      file.append('file', this.images)
+    
 
 
 
@@ -56,18 +61,10 @@ export class ContactUpdateComponent implements OnInit {
 
         this._contactService.update(this.contact._id, this.formContact.value).subscribe({
           next: (data) => {
-            console.log(data._id)
+            this.router.navigate(['/admin/contact'])
 
 
-            this._contactService.saveImage(file, data._id, this.change).subscribe({
-              next: (data) => {
-                this.router.navigate(['/admin/contact'])
-              },
-              error: (e) => {
-                console.log(e)
-              },
-              complete: () => console.info('complete image')
-            });
+            
           },
           error: (e) => {
             console.log("error")
@@ -89,17 +86,49 @@ export class ContactUpdateComponent implements OnInit {
     }
     
   }
-onFileSelected(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0]
-      this.images = file
-      this.change = true
-      if (!this.images.type.split('/').includes('image')) {
-        console.log(this.images.type + 'no válido')
-        Swal.fire('Not supported','The type of file is not supported','error')
-        this.images = null
-        this.change = false
-      }
+
+
+
+  getImage(event:any){
+
+    const image = event.target.files[0];
+    
+    this.getBase64(image).then((image: any) =>{
+      this.preview = image.base;
+      console.log(image.base); 
+    });
+    
+    
+    this.files.push(image);
+    
     }
-  }
+    
+    getBase64 = async($event:any) => new Promise((resolve, reject) => {
+    
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          
+          base: reader.result
+    
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+        
+    
+    
+    
+      }
+    
+    } catch (error) {
+    
+    }
+    })
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects-update',
@@ -10,7 +11,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./projects-update.component.css']
 })
 export class ProjectsUpdateComponent implements OnInit {
-  images: any;
+  public files:any=[];
+  public preview:string='';
+  
+  
    id:any;
    change:boolean = false;
   formProject = new FormGroup({
@@ -19,12 +23,13 @@ export class ProjectsUpdateComponent implements OnInit {
     shortDescription: new FormControl('', Validators.required),
     repoLink: new FormControl('', Validators.required),
     demoLink: new FormControl(''),
+    image: new FormControl('', Validators.required),
 
 
 
   });
   ckeditorContent = "<h1 style='align: center' >Hello</h1>";
-  constructor(private _projectService: ProjectService, private route: ActivatedRoute, private router : Router) { }
+  constructor(private _projectService: ProjectService, private route: ActivatedRoute, private router : Router,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.formProject.get('content')!.setValue("")
@@ -42,7 +47,8 @@ export class ProjectsUpdateComponent implements OnInit {
         this.formProject.get('shortDescription')!.setValue(data.shortDescription)
         this.formProject.get('repoLink')!.setValue(data.repoLink)
         this.formProject.get('demoLink')!.setValue(data.demoLink)
-    
+        this.formProject.get('image')!.setValue(data.image)
+        this.preview = data.image;
       
         
       
@@ -55,17 +61,20 @@ export class ProjectsUpdateComponent implements OnInit {
 
 
   save() {
-    console.log(this.change)
+    
+    this.formProject.get('image')?.setValue(this.preview);
     if (this.formProject.valid) {
-      var file = new FormData();
+     
 
       var project = {
          title: this.formProject.get('title')!.value,
           shortDescription: this.formProject.get('shortDescription')!.value,
             content: this.formProject.get('content')!.value,
              repoLink: this.formProject.get('repoLink')!.value,
-              demoLink: this.formProject.get('demoLink')!.value }
-      file.append('file', this.images)
+              demoLink: this.formProject.get('demoLink')!.value,
+              image: this.formProject.get('image')!.value, }
+              
+     
 
 
 
@@ -74,18 +83,10 @@ export class ProjectsUpdateComponent implements OnInit {
 
         this._projectService.update(this.id, project).subscribe({
           next: (data) => {
-            console.log(data._id)
+            this.router.navigate(['/admin/projects'])
 
 
-            this._projectService.saveImage(file, data._id, this.change).subscribe({
-              next: (data) => {
-                this.router.navigate(['/admin/projects'])
-              },
-              error: (e) => {
-                console.log(e)
-              },
-              complete: () => console.info('complete image')
-            });
+           
           },
           error: (e) => {
             console.log("error")
@@ -108,19 +109,48 @@ export class ProjectsUpdateComponent implements OnInit {
     
   }
 
+  getImage(event:any){
 
-
-  onFileSelected(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0]
-      this.images = file
-      this.change = true
-      if (!this.images.type.split('/').includes('image')) {
-        console.log(this.images.type + 'no válido')
-        Swal.fire('Not supported','The type of file is not supported','error')
-        this.images = null
-        this.change = false
-      }
+    const image = event.target.files[0];
+    
+    this.getBase64(image).then((image: any) =>{
+      this.preview = image.base;
+      console.log(image.base); 
+    });
+    
+    
+    this.files.push(image);
+    
     }
-  }
+    
+    getBase64 = async($event:any) => new Promise((resolve, reject) => {
+    
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          
+          base: reader.result
+    
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+        
+    
+    
+    
+      }
+    
+    } catch (error) {
+    
+    }
+    })
+
+  
 }

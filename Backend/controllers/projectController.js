@@ -71,14 +71,14 @@ module.exports.update = async (req, res, next) => {
 
 
 
-var { title, shortDescription, content, repoLink, demoLink } = req.body;
+var { title, shortDescription, content, repoLink, demoLink, image } = req.body;
 
 
   
 const project = await ProjectModel.findOneAndUpdate(
   
     { _id: req.params.id },
-    {  title, shortDescription, content, repoLink, demoLink }, // ==> {title: title, body: body}
+    {  title, shortDescription, content, repoLink, demoLink, image }, // ==> {title: title, body: body}
     { new: true } // return the register that was updated
   );
 
