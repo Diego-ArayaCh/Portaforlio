@@ -70,7 +70,7 @@
                 <button type="button" class="btn-close bg-light position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
                 <label for="delete">Please write the name of the project <strong>"{{project.title}}"</strong> to delete it </label>
                 <input (keyup)="validateName($event)"  class="form-control"    type="text">
-                <button  [disabled]="validateDeleteProject"(click)="delete()" class="btn btn-danger btn-delete mt-3  " >Delete</button>
+                <button  [disabled]="validateDeleteProject"(click)="delete()" data-bs-dismiss="modal" class="btn btn-danger btn-delete mt-3  " >Delete</button>
             </div>
         </div>
        

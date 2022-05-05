@@ -58,7 +58,18 @@ export class ProjectsDetailsComponent implements OnInit {
   }
 
   delete(){
-   console.log('Deleting project')
+  this._projectService.delete(this.id).subscribe({
+      next:  (data) => {
+       
+       Swal.fire('Project deleted','The project has been deleted', 'success')
+       
+      
+        
+      
+        
+      },complete() {},
+      error(err) { console.log('Received an error: ' + err)}
+    });
   }
   validateName(name:any){
     let title = name.target.value

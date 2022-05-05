@@ -37,8 +37,8 @@ export class ProjectService {
 
     return this.http.put(`${API_ENDPOINT}/save-image/${id}/${change}`,file);
   }
-  delete(id: string, project: any): Observable<any> {
-    return this.http.put(`${API_ENDPOINT}/delete-project/${id}`,project);
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${API_ENDPOINT}/delete-project/${id}`);
   }
   changeState(id: string, project: any): Observable<any> {
     return this.http.put(`${API_ENDPOINT}/state-change/${id}`,project);

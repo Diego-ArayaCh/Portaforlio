@@ -11,7 +11,7 @@ router.put("/update-project/:id",auth, projectController.update);
 router.put("/state-change/:id",auth, projectController.state);
 
 
-router.put('/delete-project/:id',auth, projectController.delete);
+router.delete('/delete-project/:id',auth, projectController.delete);
 
 router.get('/get/', projectController.get);
 

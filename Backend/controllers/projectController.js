@@ -109,7 +109,7 @@ module.exports.state = async (req, res, next) => {
   };
 
 module.exports.delete = async (req, res, next) => {
-    const project = await AvionModel.findByIdAndRemove(req.params.id);
+    const project = await ProjectModel.findByIdAndRemove(req.params.id);
    
     if (project) {
       res.json({ result: `Project deleted`, post: project });
