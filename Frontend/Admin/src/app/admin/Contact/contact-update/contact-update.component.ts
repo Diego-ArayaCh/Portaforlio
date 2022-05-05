@@ -15,7 +15,7 @@ export class ContactUpdateComponent implements OnInit {
   public preview:string='';
   contact:any;
   id:any;
-  change:boolean = false;
+ 
  formContact = new FormGroup({
    name: new FormControl('', Validators.required),
    lastName: new FormControl('', Validators.required),
@@ -23,16 +23,21 @@ export class ContactUpdateComponent implements OnInit {
    phoneNumber: new FormControl('', Validators.required),
    linkedInLink: new FormControl('', Validators.required),
    description: new FormControl('', Validators.required),
-   image: new FormControl('', Validators.required),
+   image: new FormControl(''),
 
  });
   constructor(private _contactService: ContactService, private route: ActivatedRoute, private router : Router,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
+    this.loadContent();
+  
     
+  }
+
+  loadContent () {
     this._contactService.get().subscribe({
       next: async (data) => {
-        console.log(data);
+      
        this.contact = data[0];
         this.formContact.get('name')!.setValue(this.contact.name);
         this.formContact.get('lastName')!.setValue(this.contact.lastName);
@@ -40,9 +45,10 @@ export class ContactUpdateComponent implements OnInit {
         this.formContact.get('phoneNumber')!.setValue(this.contact.phoneNumber);
         this.formContact.get('linkedInLink')!.setValue(this.contact.linkedInLink);
         this.formContact.get('description')!.setValue(this.contact.description);
-        this.formContact.get('image')!.setValue(this.contact.description);
-        this.preview = data.image
-      }
+        this.formContact.get('image')!.setValue(this.contact.image);
+        this.preview =  this.contact.image
+      },complete() {},
+      error(err) { console.log('Received an error: ' + err)}
     });
     
   }
@@ -69,7 +75,7 @@ export class ContactUpdateComponent implements OnInit {
           error: (e) => {
             console.log("error")
           },
-          complete: () => { Swal.fire('contact Saved','The contact has been saved','success')
+          complete: () => { Swal.fire('Contact Saved','The contact has been saved','success')
         
          
         
@@ -128,7 +134,7 @@ export class ContactUpdateComponent implements OnInit {
       }
     
     } catch (error) {
-    
+    console.log(error);
     }
     })
 }

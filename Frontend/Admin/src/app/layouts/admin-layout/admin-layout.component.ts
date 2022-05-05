@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/loader/loader.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-admin-layout',
@@ -7,8 +8,9 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent implements OnInit {
+  
    i = 0;
-  constructor(private router: Router, private token: TokenStorageService) { }
+  constructor(private router: Router, private token: TokenStorageService, public loaderService:LoaderService) { }
 
   ngOnInit(): void {
    
@@ -16,6 +18,7 @@ export class AdminLayoutComponent implements OnInit {
   
   logout(): void {
     this.token.signOut();
+    
     this.router.navigate(['/'])
   }
   changeTheme():void{

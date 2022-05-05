@@ -10,7 +10,9 @@ import Swal from 'sweetalert2';
 })
 export class ProjectsDetailsComponent implements OnInit {
  public project:any;
+ nameProject:any;
  id:any;
+ validateDeleteProject: boolean = true;
   constructor( private _projectService: ProjectService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -53,5 +55,23 @@ export class ProjectsDetailsComponent implements OnInit {
       },
       error(err) { console.log('Received an error: ' + err)}
     });
+  }
+
+  delete(){
+   console.log('Deleting project')
+  }
+  validateName(name:any){
+    let title = name.target.value
+    
+ 
+    if(title.trim().length > 0){
+      if (title.trim() == this.project.title) {
+        this.validateDeleteProject = false;
+      }else{
+        this.validateDeleteProject = true;
+      }
+    }else{
+      this.validateDeleteProject = true;
+    }
   }
 }

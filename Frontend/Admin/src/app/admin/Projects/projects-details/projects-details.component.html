@@ -47,11 +47,30 @@
                 <h3>Actions</h3>
                 <ul class="buttons-actions">
                     <li><button routerLink="/admin/projects/update/{{project._id}}" data-bs-dismiss="modal" class=" btn btn-light">Update</button></li>
-                    <li *ngIf="project.state==1"><button (click)="changeState(0)" class=" btn btn-danger" >Disable</button></li>
+                    
+                    <li *ngIf="project.state==1"><button (click)="changeState(0)" class=" btn btn-warning" >Disable</button></li>
                     <li *ngIf="project.state==0"><button (click)="changeState(1)" class=" btn btn-success" >Enable</button></li>
+                    <li><button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modal-delete" class=" btn btn-danger">Delete</button></li>
                 </ul>
                 
                 
+            </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modal-delete" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+            <div  *ngIf="project != null" class="actions-delete position-relative">
+                <button type="button" class="btn-close bg-light position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <label for="delete">Please write the name of the project <strong>"{{project.title}}"</strong> to delete it </label>
+                <input (keyup)="validateName($event)"  class="form-control"    type="text">
+                <button  [disabled]="validateDeleteProject"(click)="delete()" class="btn btn-danger btn-delete mt-3  " >Delete</button>
             </div>
         </div>
        

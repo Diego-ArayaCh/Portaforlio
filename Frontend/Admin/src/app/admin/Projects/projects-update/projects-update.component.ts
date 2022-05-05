@@ -38,7 +38,7 @@ export class ProjectsUpdateComponent implements OnInit {
   }
 
   loadContent () {
-    let id = 
+   
     this._projectService.getById(this.id).subscribe({
       next: async (data) => {
       
