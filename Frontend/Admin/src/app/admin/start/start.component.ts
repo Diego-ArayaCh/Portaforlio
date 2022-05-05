@@ -67,6 +67,8 @@ export class StartComponent implements OnInit {
           }]
       },
       options: {
+      
+        animation: false,
           scales: {
             myScale: {
               type: 'logarithmic',
@@ -76,6 +78,9 @@ export class StartComponent implements OnInit {
           }
       }
   });
+
+ 
+  
   }
 
 
