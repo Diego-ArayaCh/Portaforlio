@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 
 import { TokenStorageService } from '../../services/token-storage.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { DataSharingService } from 'src/app/shared/dataSharing.service';
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
@@ -30,8 +31,8 @@ export class StartComponent implements OnInit {
      private sanitizer: DomSanitizer,
       private _userService: UserService,
        private router: Router, 
-       private _themeService: ThemeService) { }
-
+       private _themeService: ThemeService, private token: TokenStorageService, public dataSharingService:DataSharingService) { }
+      activeTheme:any;
   ngOnInit(): void {
 
     if (this.tokenStorage.getToken()) {
@@ -63,13 +64,13 @@ export class StartComponent implements OnInit {
           next: (data) => {
             if (data.success === true) {
             
-            console.log(data)
+           
               this.tokenStorage.saveToken(data.token);
               this.tokenStorage.saveUser(data.user);
               this.isLoginFailed = false;
               this.isLoggedIn = true;
               this.router.navigate(['/admin']);
-              console.log(this.tokenStorage.getUser().theme)
+              
             
             } else {
               console.log("error")
@@ -103,5 +104,29 @@ export class StartComponent implements OnInit {
 
     }
 
+  }
+  loadTheme(){
+ 
+    
+    this._userService.getById(this.token.getUser()._id).subscribe({
+      next: async(data) => {
+        this.token.saveUser(data);
+        this.activeTheme = data.theme
+        let root = document.documentElement;
+        root.style.setProperty('--primary', this.activeTheme.primary )
+      
+        root.style.setProperty('--accent', this.activeTheme.accent )
+        root.style.setProperty('--backgroundColor1', this.activeTheme.backgroundColor1 )
+        root.style.setProperty('--backgroundColor2', this.activeTheme.backgroundColor2 )
+        root.style.setProperty('--fontContentColor', this.activeTheme.fontContentColor )
+        root.style.setProperty('--fontTitleColor', this.activeTheme.fontTitleColor )
+        root.style.setProperty('--deepBackground', this.activeTheme.deepBackground )
+        this.dataSharingService.themeActive.next(data.theme.name)
+        
+      },
+      error(err) { console.log( err)}
+    });
+  
+   
   }
 }

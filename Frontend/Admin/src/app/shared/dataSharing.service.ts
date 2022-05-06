@@ -8,7 +8,10 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class DataSharingService {
     public themeActive!: BehaviorSubject<string>;
     constructor(private token: TokenStorageService){
-        this.themeActive = new BehaviorSubject<string>(token.getUser().theme.name);	
+      
+            this.themeActive = new BehaviorSubject<string>('');	
+       
+     
     }
     
     

@@ -72,8 +72,8 @@ module.exports.get = async (req, res, next) => {
 
 module.exports.getById = async (req, res, next) => {
   const id = req.params.id;
-  var user = await UserModel.findOne({ _id: id }).exec();
-  user.pwd='';
+  var user = await UserModel.findOne({ _id: id }).populate('theme').exec();
+  
   res.json(user);
 };
 

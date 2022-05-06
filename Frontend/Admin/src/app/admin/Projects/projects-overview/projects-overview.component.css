@@ -6,7 +6,7 @@
   .cards {
   
     margin: 5rem 3vw;
-    padding: 0;
+  
     list-style-type: none;
   }
   .cards > li{
@@ -117,4 +117,6 @@ border: 0;
     overflow: hidden;
   }    
 
-  
+  ul.cards.row{
+    padding-left: 0;
+  }

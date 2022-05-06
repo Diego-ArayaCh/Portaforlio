@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader/loader.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { DataSharingService } from 'src/app/shared/dataSharing.service';
 @Component({
   selector: 'app-admin-layout',
@@ -14,7 +15,8 @@ export class AdminLayoutComponent implements OnInit {
   activeTheme:any;
 
   constructor(public dataSharingService: DataSharingService,
-    private _themeService: ThemeService, private router: Router, private token: TokenStorageService, public loaderService:LoaderService) { }
+    private _themeService: ThemeService,
+    private _userService: UserService, private router: Router, private token: TokenStorageService, public loaderService:LoaderService) { }
 
   ngOnInit(): void {
    
@@ -31,22 +33,30 @@ export class AdminLayoutComponent implements OnInit {
     });
    this.loadTheme();
   }
-  load(){
-    console.log('works')
-  }
+ 
   loadTheme(){
-    console.log(this.token.getUser())
-    let theme = this.token.getUser().theme
-    this.activeTheme = theme
-    let root = document.documentElement;
-    root.style.setProperty('--primary', theme.primary )
+ 
+    console.log('Loading theme')
+    this._userService.getById(this.token.getUser()._id).subscribe({
+      next: async(data) => {
+        this.token.saveUser(data);
+        this.activeTheme = data.theme
+        let root = document.documentElement;
+        root.style.setProperty('--primary', this.activeTheme.primary )
+      
+        root.style.setProperty('--accent', this.activeTheme.accent )
+        root.style.setProperty('--backgroundColor1', this.activeTheme.backgroundColor1 )
+        root.style.setProperty('--backgroundColor2', this.activeTheme.backgroundColor2 )
+        root.style.setProperty('--fontContentColor', this.activeTheme.fontContentColor )
+        root.style.setProperty('--fontTitleColor', this.activeTheme.fontTitleColor )
+        root.style.setProperty('--deepBackground', this.activeTheme.deepBackground )
+        this.dataSharingService.themeActive.next(data.theme.name)
+        
+      },
+      error(err) { console.log( err)}
+    });
   
-    root.style.setProperty('--accent', theme.accent )
-    root.style.setProperty('--backgroundColor1', theme.backgroundColor1 )
-    root.style.setProperty('--backgroundColor2', theme.backgroundColor2 )
-    root.style.setProperty('--fontContentColor', theme.fontContentColor )
-    root.style.setProperty('--fontTitleColor', theme.fontTitleColor )
-    root.style.setProperty('--deepBackground', theme.deepBackground )
+   
   }
   
   logout(): void {
