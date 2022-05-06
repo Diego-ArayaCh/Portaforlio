@@ -1,6 +1,4 @@
-.container{
-    height: 100vh;
-}
+
 
 
 .colors{
@@ -24,5 +22,17 @@
 
 }
 .card{
+
     cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  
+    margin-right: 50px ;
+    box-shadow: 20px 10px 10px #1d2028d2;
+    border-radius: 10px 0 10px 0;
+    transition: all 1s;
+}
+.card:hover{
+    box-shadow: 20px 10px 30px #1d2028d2;
+    border-radius: 40px 0 40px 0;
 }

@@ -4,7 +4,13 @@ const {Schema, model} = require('mongoose');
 
 
 const ThemeShema = new Schema({
-  fontColor: {
+  fontContentColor: {
+    type: String,
+  },
+  fontTitleColor: {
+    type: String,
+  },
+  deepBackground: {
     type: String,
   },
   backgroundColor1: {

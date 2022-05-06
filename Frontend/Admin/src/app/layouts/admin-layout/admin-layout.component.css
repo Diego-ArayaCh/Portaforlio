@@ -1,6 +1,6 @@
 .nav-style{
     background-color: var(--backgroundColor1);
-    background: linear-gradient(45deg, var(--backgroundColor2) 0%, var(--backgroundColor1) 100%);
+    background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--primary) 100%);
     background-size: 400% 400%;
     animation: gradient 6s ease infinite;
 }
@@ -8,15 +8,12 @@
     
     width: 110%;
 }
-.nav-item a , .nav-item{
-    color: var(--fontColor);
-    transition: box-shadow 500ms, color 500ms , border-radius 1500ms;
-}
+
 
 
 
 .nav-item  :hover{
-    color: var(--primary);
+    color: var(--accent);
    border-radius: 0px 25px 0px 25px ;
     box-shadow: 10px 10px 10px #000
 }
@@ -35,13 +32,13 @@
 
 
 .nav-item a  :hover{
-    color: var(--primary);
+    color: var(--accent);
    
     box-shadow: none
 }
 
 .nav{
-   padding-right: 2%;
+   padding-left: 1.2rem;
     
 }
 
@@ -68,3 +65,11 @@
     z-index: 100000;
 }
 
+main ,.container-content, .row{
+    background-color: var(--deepBackground);
+    color: var(--fontContentColor);
+}
+.nav-item a , .nav-item{
+    color: var(--fontTitleColor) ;
+    transition: box-shadow 500ms, color 500ms , border-radius 1500ms;
+}

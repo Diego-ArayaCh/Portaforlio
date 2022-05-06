@@ -33,7 +33,7 @@ backdrop-filter: blur(2px);
     list-style-type: none;
     margin: .30rem;
     border-radius: 40px;
-    box-shadow: 5px 5px 5px rgba(117, 117, 117, 0.785); 
+    box-shadow: 5px 5px 5px #1d2028d2;
    
     
 }
@@ -80,7 +80,7 @@ backdrop-filter: blur(2px);
   text-align: center;
   background-color: var(--backgroundColor1);
   
-  color: var(--fontColor);
+  color: var(--fontTitleColor);
   
 
 
@@ -89,7 +89,8 @@ backdrop-filter: blur(2px);
    background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--accent) 100%);
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
- 
+   width: 50%;
+   margin: 5% auto;
  
 }
 
@@ -131,10 +132,10 @@ backdrop-filter: blur(2px);
     z-index: 99;
     padding: 10px;
     border-radius: 100px 0 100px 0;
-    background-color: var(--backgroundColor1);
+    background-color: var(--primary);
     border: none;
     transition: all 500ms;
-    box-shadow: 10px 10px 10px rgb(35, 35, 35); 
+    box-shadow: 10px 10px 10px #1d2028d2;
 }
 .btn-update:hover{
     background-color: rgba(0, 0, 0, 0.395);

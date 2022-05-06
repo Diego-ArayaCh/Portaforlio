@@ -13,19 +13,15 @@ connectDB();
 
 
 
-app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-);
+
+
 app.use(cors());
 app.use(logger("dev"));
 
 app.use('/public', express.static(`${__dirname}/src/public/img`))
 
 
-
+app.use(express.json());
 
 
 //routes------------------------------------------------------------------------------------------------

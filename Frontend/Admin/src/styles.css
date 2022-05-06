@@ -5,8 +5,9 @@
     --primary: #94bbe9;
     --backgroundColor1: #3e454e;
     --backgroundColor2: #8f8f8f;
-    --fontColor: #ffffff;
-    --surface-color: var(--fontColor);
+    --fontTitleColor: #ffffff;
+    --deepBackground: #fff;
+    --surface-color: var(--fontTitleColor);
     --curve: 40;
     overflow: hidden;
 }

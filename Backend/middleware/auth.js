@@ -15,7 +15,8 @@ const verifyToken = async (req, res, next) => {
   //  console.log(token);
     const { user } = jwt.verify(token, "secret");
     
-    req.user = await userModel.findOne({ user }).exec();
+    req.user = await userModel.findOne(user).populate('theme').exec();
+    console.log(req.user);
   
   } catch (err) {
     console.log(err)

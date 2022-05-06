@@ -14,7 +14,7 @@ router.post("/create" ,themeController.create);
 
 
 
-router.get('/get/', auth, themeController.get);
+router.get('/get/',auth, themeController.get);
 
 router.get('/get/:id', auth,themeController.getById);
 

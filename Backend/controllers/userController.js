@@ -24,9 +24,10 @@ module.exports.signup = async (req, res, next) => {
 // logueo de usuarios
 module.exports.signin = async (req, res, next) => {
 
-  const { username, pwd } = req.body;
+  const { username, pwd , theme } = req.body;
 
-  const user = await UserModel.findOne({ username: username }).exec();
+  const user = await UserModel.findOne({ username: username }).populate('theme').exec();
+
 
   if (!user) {
 
@@ -41,7 +42,8 @@ module.exports.signin = async (req, res, next) => {
           { expiresIn: "2h" }
         );
         // return the information including token as JSON
-        const payload = { user: user.username, _id: user._id };
+        const payload = { user: user.username, _id: user._id, theme: user.theme};
+        console.log(user.theme)
         res.json({ success: true, token: token, user: payload });
       } else {
           //si la contraseña no coincide se procede a indicar el error
@@ -60,7 +62,7 @@ module.exports.signin = async (req, res, next) => {
 
 module.exports.get = async (req, res, next) => {
     
-        const user = await UserModel.find({}).exec();
+        const user = await UserModel.find().populate('theme').exec();
         res.json(user);
     
    

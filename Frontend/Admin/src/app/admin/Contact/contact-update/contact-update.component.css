@@ -11,7 +11,7 @@ input[type=number] { -moz-appearance:textfield; }
   text-align: center;
   background-color: var(--backgroundColor1);
   
-  color: var(--fontColor);
+  color: var(--fontTitleColor);
   
 
 
@@ -21,7 +21,8 @@ input[type=number] { -moz-appearance:textfield; }
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
  
- 
+   width: 50%;
+   margin: 5% auto;
 }
 
 

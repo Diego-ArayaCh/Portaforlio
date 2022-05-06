@@ -21,11 +21,11 @@ res.json(theme);
 
 
 module.exports.create =  (req, res, next) => {
-    var {name, fontColor,backgroundColor1, backgroundColor2, accent, primary} = req.body;
+    var {name ,deepBackground, fontContentColor, fontTitleColor,backgroundColor1, backgroundColor2, accent, primary} = req.body;
     
 state = 1;
 
-var theme = new ThemeModel({ name, fontColor,backgroundColor1, backgroundColor2, accent, primary, state});
+var theme = new ThemeModel({ name ,deepBackground, fontContentColor, fontTitleColor,backgroundColor1, backgroundColor2, accent, primary, state});
     
    
 
@@ -41,14 +41,14 @@ module.exports.update = async (req, res, next) => {
 
 console.log(req.body)
 
-var {name, fontColor,backgroundColor1, backgroundColor2, accent, primary} = req.body;
+var {name ,deepBackground, fontContentColor, fontTitleColor,backgroundColor1, backgroundColor2, accent, primary} = req.body;
 
 
   
 const theme = await ThemeModel.findOneAndUpdate(
   
     { _id: req.params.id },
-    {  name, fontColor,backgroundColor1, backgroundColor2, accent, primary}, // ==> {title: title, body: body}
+    {  name ,deepBackground, fontContentColor, fontTitleColor,backgroundColor1, backgroundColor2, accent, primary}, // ==> {title: title, body: body}
     { new: true } // return the register that was updated
   );
 
@@ -79,18 +79,18 @@ module.exports.delete = async (req, res, next) => {
 
   
     
-    var {idUser} = req.body;
+    var {_id} = req.body;
  
       
     const user = await UserModel.findOneAndUpdate(
       
-        { _id: idUser },
+        { _id: _id },
         { theme: req.params.id }, // ==> {title: title, body: body}
         { new: true } // return the register that was updated
-      );
+      ).populate('theme').exec();
     
-      
-      res.json(theme);
+      console.log(user);
+      res.json(user);
     
     
     };

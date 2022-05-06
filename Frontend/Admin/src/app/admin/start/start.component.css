@@ -8,7 +8,7 @@
   text-align: center;
   background-color: var(--backgroundColor1);
   
-  color: var(--fontColor);
+  color: var(--fontTitleColor);
   
 
 
@@ -17,7 +17,8 @@
    background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--accent) 100%);
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
- 
+   width: 50%;
+   margin: 5% auto;
  
 }
 @keyframes gradient {
@@ -37,13 +38,13 @@ canvas{
     background-color: var(--backgroundColor1);
 }
 .stats{
-    color: var(--fontColor) !important;
+    color: var(--fontTitleColor) !important;
     background-color: var(--backgroundColor1) !important;
 }
 .card{
     background-color: var(--backgroundColor2) ;
-    box-shadow: 10px 10px 12px var(--backgroundColor1);
+    box-shadow: 10px 10px 12px #1d2028d2;
 }
 .title-card{
-    color: var(--primary)
+    color: var(--accent)
 }

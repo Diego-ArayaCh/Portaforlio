@@ -4,7 +4,7 @@
     height: 100%;
     background-color: #00000065;
    
-   color: var(--fontColor);
+   color: var(--fontTitleColor);
    padding: 5px;
    border-radius: 10px 0 10px 10px;
    box-shadow: 10px 10px 10px #1e1e1ec4; 
@@ -24,7 +24,7 @@ backdrop-filter: blur(2px);
     height: 100%;
     background-color: #ff727265;
    
-   color: var(--fontColor);
+   color: var(--fontTitleColor);
    padding: 5px;
    border-radius: 10px 0 10px 10px;
    box-shadow: 10px 10px 10px #1e1e1ec4; 
@@ -63,7 +63,7 @@ backdrop-filter: blur(2px);
     list-style-type: none;
     margin: .30rem;
     border-radius: 40px;
-    box-shadow: 5px 5px 5px rgba(117, 117, 117, 0.785); 
+    box-shadow: 5px 5px 5px  #1d2028d2;
    
     
 }
@@ -77,7 +77,7 @@ backdrop-filter: blur(2px);
     
     
   text-decoration: none;
-   color: var(--fontColor);
+   color: var(--fontTitleColor);
    padding: 10px;
    border-radius: 10px;
    
@@ -89,7 +89,7 @@ backdrop-filter: blur(2px);
 }
 .links>li:hover{
     background-color: var(--backgroundColor2);
-    color: var(--fontColor);
+    color: var(--fontTitleColor);
     box-shadow: none; 
 }
 .container-links{
@@ -99,7 +99,7 @@ backdrop-filter: blur(2px);
     width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px rgb(35, 35, 35); 
+    box-shadow: 10px 10px 10px #1d2028d2; 
     margin-bottom: 5%;
 }
 
@@ -115,7 +115,7 @@ backdrop-filter: blur(2px);
   text-align: center;
   background-color: var(--backgroundColor1);
   
-  color: var(--fontColor);
+  color: var(--fontTitleColor);
   
 
 
@@ -125,7 +125,8 @@ backdrop-filter: blur(2px);
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
  
- 
+   width: 50%;
+   margin: 5% auto;
 }
 #content{
     word-wrap: break-word;
@@ -174,7 +175,7 @@ backdrop-filter: blur(2px);
     background-color: var(--backgroundColor1);
     border: none;
     transition: all 500ms;
-    box-shadow: 10px 10px 10px rgb(35, 35, 35); 
+    box-shadow: 10px 10px 10px #1d2028d2;
 }
 .btn-modal:hover{
     background-color: rgba(0, 0, 0, 0.395);
