@@ -1,5 +1,7 @@
-<div class="position-relative" *ngIf="loaderService.isLoading | async" class="loader-container">
+
+<div onload="load()" class="position-relative" *ngIf="loaderService.isLoading | async" class="loader-container">
   <mat-progress-spinner class="position-absolute top-50 start-50 translate-middle"  mode="indeterminate"></mat-progress-spinner>
+  <h1 class="position-absolute top-50 start-50 translate-middle">{{loaderService.label | async}}</h1>
 </div>
 <div class="container-fluid overflow-hidden">
   
@@ -53,7 +55,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li><a routerLink='/admin/projects/create' class="dropdown-item" >New project...</a></li>
-            <li><a class="dropdown-item" (click)="changeTheme()">Settings</a></li>
+            <li><a routerLink='/admin/themes/choose' class="dropdown-item" >Themes</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>
               <hr class="dropdown-divider">

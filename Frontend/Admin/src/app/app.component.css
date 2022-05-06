@@ -1,0 +1,8 @@
+#spinner.backdrop{
+    background-color: var(--backgroundColor1) !important;
+}
+
+.sk-rotating-plane[_ngcontent-hik-c39]{
+    height: 200% !important;
+    width: 200% !important;
+}

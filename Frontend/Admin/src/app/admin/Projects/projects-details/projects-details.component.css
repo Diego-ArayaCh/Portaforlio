@@ -4,7 +4,7 @@
     height: 100%;
     background-color: #00000065;
    
-   color: var(--white-color);
+   color: var(--fontColor);
    padding: 5px;
    border-radius: 10px 0 10px 10px;
    box-shadow: 10px 10px 10px #1e1e1ec4; 
@@ -24,7 +24,7 @@ backdrop-filter: blur(2px);
     height: 100%;
     background-color: #ff727265;
    
-   color: var(--white-color);
+   color: var(--fontColor);
    padding: 5px;
    border-radius: 10px 0 10px 10px;
    box-shadow: 10px 10px 10px #1e1e1ec4; 
@@ -40,7 +40,7 @@ backdrop-filter: blur(2px);
 }
 .btn-danger.btn-delete {
     color: #fff;
-    background-color: var(--space-color);
+    background-color: var(--backgroundColor1);
     border-color: #fff;
 }
 .btn-danger.disabled, .btn-danger:disabled {
@@ -77,7 +77,7 @@ backdrop-filter: blur(2px);
     
     
   text-decoration: none;
-   color: var(--white-color);
+   color: var(--fontColor);
    padding: 10px;
    border-radius: 10px;
    
@@ -88,8 +88,8 @@ backdrop-filter: blur(2px);
   
 }
 .links>li:hover{
-    background-color: var(--gray-color);
-    color: var(--white-color);
+    background-color: var(--backgroundColor2);
+    color: var(--fontColor);
     box-shadow: none; 
 }
 .container-links{
@@ -104,24 +104,24 @@ backdrop-filter: blur(2px);
 }
 
 .demoLink{
-    background-color: var(--orange-color);
+    background-color: var(--accent);
 }
 .repoLink{
-    background-color: var(--space-color);
+    background-color: var(--backgroundColor1);
 }
 
 .page-header {
     margin-top: 5%;
   text-align: center;
-  background-color: var(--space-color-);
+  background-color: var(--backgroundColor1);
   
-  color: var(--white-color);
+  color: var(--fontColor);
   
 
 
    border-radius: 0 0  10px 10px;
   
-   background: linear-gradient(45deg, var(--blue-color) 0%, var(--space-color) 100%);
+   background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--accent) 100%);
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
  
@@ -171,7 +171,7 @@ backdrop-filter: blur(2px);
     z-index: 99;
     padding: 10px;
     border-radius: 100px 0 100px 0;
-    background-color: var(--space-color);
+    background-color: var(--backgroundColor1);
     border: none;
     transition: all 500ms;
     box-shadow: 10px 10px 10px rgb(35, 35, 35); 

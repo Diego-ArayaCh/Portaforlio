@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader/loader.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+
 @Component({
-  selector: 'app-admin-layout',
-  templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.css']
+  selector: 'app-select-theme',
+  templateUrl: './select-theme.component.html',
+  styleUrls: ['./select-theme.component.css']
 })
-export class AdminLayoutComponent implements OnInit {
+export class SelectThemeComponent implements OnInit {
+
+  constructor(private _themeService:ThemeService, private token: TokenStorageService) { }
   themes: any[] = [];
-
-  constructor(private _themeService: ThemeService, private router: Router, private token: TokenStorageService, public loaderService:LoaderService) { }
-
   ngOnInit(): void {
-    this.loaderService.setBoolean(false);
+    this.loadThemes();
+  }
+  loadThemes(): void {
+  
+    
+
     this._themeService.get().subscribe({
       next: async(data) => {
         this.themes = await data
@@ -25,14 +28,8 @@ export class AdminLayoutComponent implements OnInit {
       },
       error(err) { console.log('Received an error: ' + err)}
     });
-   this.loadTheme();
   }
-  load(){
-    console.log('works')
-  }
-  loadTheme(){
-    console.log(this.token.getUser())
-    let theme = this.token.getUser().theme
+  changeTheme(theme:any){
     let root = document.documentElement;
     root.style.setProperty('--primary', theme.primary )
   
@@ -40,12 +37,18 @@ export class AdminLayoutComponent implements OnInit {
     root.style.setProperty('--backgroundColor1', theme.backgroundColor1 )
     root.style.setProperty('--backgroundColor2', theme.backgroundColor2 )
     root.style.setProperty('--fontColor', theme.fontColor )
+
+const user = this.token.getUser();
+console.log(user)
+      this._themeService.saveTheme(theme._id, user).subscribe({
+      next: async(data) => {
+        
+        this.token.saveUser(data)
+      
+      
+        
+      },
+      error(err) { console.log('Received an error: ' + err)}
+    });
   }
-  
-  logout(): void {
-    this.token.signOut();
-    
-    this.router.navigate(['/'])
-  }
-  
 }

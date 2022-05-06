@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { LoaderService } from '../loader/loader.service';
 
 const API_ENDPOINT = `${environment.apiUrl}/api/project`;
 
@@ -13,14 +14,16 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private loaderService: LoaderService) {}
 
   get(): Observable<any> {
+    this.loaderService.setLabel('Getting Projects')
     return this.http.get(`${API_ENDPOINT}/get/`, httpOptions);
   }
  
 
   getById(id: string): Observable<any> {
+    this.loaderService.setLabel('Getting the selected project')
     return this.http.get(`${API_ENDPOINT}/get/${id}`);
   }
 

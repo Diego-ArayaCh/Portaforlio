@@ -1,5 +1,6 @@
 const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
 
 
 //nuevo
@@ -9,7 +10,11 @@ const UserSchema = new Schema({
   },
   pwd: {
     type: String,
-  }
+  },
+  theme: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Theme'
+},
 });
 
 UserSchema.pre('save', function (next) {

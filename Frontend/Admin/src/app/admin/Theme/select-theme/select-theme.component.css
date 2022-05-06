@@ -1,0 +1,28 @@
+.container{
+    height: 100vh;
+}
+
+
+.colors{
+    list-style-type: none;
+
+}
+.colors>li{
+    display: block;
+  
+    width: 10px;
+    height: 20px;
+   
+}
+
+.card-header{
+    color: #fff;
+}
+
+.names-colors{
+    list-style-type: none;
+
+}
+.card{
+    cursor: pointer;
+}

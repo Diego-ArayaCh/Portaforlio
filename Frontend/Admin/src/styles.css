@@ -1,24 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 :root{
-    --orange-color: #FC8019;
-    /* --blue-color: #007A7A; */
-    --blue-color: #94bbe9;
-    --space-color: #3e454e;
-    --gray-color: #8f8f8f;
-    --white-color: #ffffff;
-    --surface-color: var(--white-color);
+    --accent: #FC8019;
+    --deep: #fff;
+    --primary: #94bbe9;
+    --backgroundColor1: #3e454e;
+    --backgroundColor2: #8f8f8f;
+    --fontColor: #ffffff;
+    --surface-color: var(--fontColor);
     --curve: 40;
     overflow: hidden;
 }
 
 
 
+router-outlet{
+    background-color: var(--deep);
+}
 
-
-html, body { height: 100%; }
+html, body { height: 100%;    }
 body {
+  
   font-size: medium !important ;
-     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+     margin: 0;
+    
+     font-family: 'Encode Sans Condensed', sans-serif !important; }
 
 .mat-progress-spinner circle, .mat-spinner circle {
-    stroke: var(--blue-color) !important;
+    stroke: var(--accent) !important;
 }

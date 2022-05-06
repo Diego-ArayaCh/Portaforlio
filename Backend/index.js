@@ -32,7 +32,7 @@ app.use('/public', express.static(`${__dirname}/src/public/img`))
 app.use('/api/user', require('./routes/user'));
 app.use('/api/project', require('./routes/project'));
 app.use('/api/contact', require('./routes/contact'));
-
+app.use('/api/theme', require('./routes/theme'));
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

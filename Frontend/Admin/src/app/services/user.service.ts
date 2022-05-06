@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { LoaderService } from '../loader/loader.service';
 
 const API_ENDPOINT = `${environment.apiUrl}/api/user`;
 
@@ -13,10 +14,12 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  public loaderService: LoaderService) {}
 
   get(): Observable<any> {
+    this.loaderService.setLabel('Getting user')
     return this.http.get(`${API_ENDPOINT}/get/`, httpOptions);
+
   }
  
 
@@ -39,6 +42,7 @@ export class UserService {
     return this.http.post(`${API_ENDPOINT}/signup`, usuario,httpOptions);
   }
   signIn(usuario: any): Observable<any> {
+    this.loaderService.setLabel('Starting session')
     return this.http.post(`${API_ENDPOINT}/signin`, usuario,httpOptions);
   }
 

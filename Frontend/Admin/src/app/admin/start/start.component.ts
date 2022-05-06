@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { ProjectService } from 'src/app/services/project.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 Chart.register(...registerables);
 
 @Component({
@@ -16,7 +17,7 @@ export class StartComponent implements OnInit {
   numVisits: any;
 
 
-  constructor(private _projectService: ProjectService) { }
+  constructor(private _projectService: ProjectService, private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.loadCards()
@@ -51,7 +52,7 @@ export class StartComponent implements OnInit {
     //Variables para el grafico de la parte superior del dashboard
     this.canvas = this.mychart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
-
+    let theme = this.token.getUser().theme
     //Se debe remplazar con las ganancias de 12 meses
     var dataDB = [150, 150, 300, 475, 700, 689, 720, 150, 900, 300, 475, 340];
     const myChart = new Chart(this.ctx, {
@@ -61,7 +62,8 @@ export class StartComponent implements OnInit {
           datasets: [{
               label: '# of Visits',
               data: dataDB,
-              borderColor: '#FC8019',
+              backgroundColor: theme.backgroundColor1,
+              borderColor: theme.accent,
               tension: 0.1,
               borderWidth: 1
           }]

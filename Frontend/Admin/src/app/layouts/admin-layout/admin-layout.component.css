@@ -1,6 +1,6 @@
 .nav-style{
-    background-color: var(--space-color);
-    background: linear-gradient(45deg, var(--gray-color) 0%, var(--space-color) 100%);
+    background-color: var(--backgroundColor1);
+    background: linear-gradient(45deg, var(--backgroundColor2) 0%, var(--backgroundColor1) 100%);
     background-size: 400% 400%;
     animation: gradient 6s ease infinite;
 }
@@ -9,14 +9,14 @@
     width: 110%;
 }
 .nav-item a , .nav-item{
-    color: var(--white-color);
+    color: var(--fontColor);
     transition: box-shadow 500ms, color 500ms , border-radius 1500ms;
 }
 
 
 
 .nav-item  :hover{
-    color: var(--blue-color);
+    color: var(--primary);
    border-radius: 0px 25px 0px 25px ;
     box-shadow: 10px 10px 10px #000
 }
@@ -35,7 +35,7 @@
 
 
 .nav-item a  :hover{
-    color: var(--blue-color);
+    color: var(--primary);
    
     box-shadow: none
 }
@@ -63,7 +63,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--backgroundColor2);
    
     z-index: 100000;
 }

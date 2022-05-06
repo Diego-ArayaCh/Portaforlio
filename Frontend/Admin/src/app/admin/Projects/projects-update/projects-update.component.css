@@ -1,15 +1,15 @@
 .page-header {
     margin-top: 5%;
   text-align: center;
-  background-color: var(--space-color-);
+  background-color: var(--backgroundColor1);
   
-  color: var(--white-color);
+  color: var(--fontColor);
   
 
 
    border-radius: 0 0  10px 10px;
   
-   background: linear-gradient(45deg, var(--blue-color) 0%, var(--space-color) 100%);
+   background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--accent) 100%);
    background-size: 400% 400%;
    animation: gradient 6s ease infinite;
  

@@ -7,7 +7,7 @@ import { ProjectsDetailsComponent } from './Projects/projects-details/projects-d
 import { ProjectsCreateComponent } from './Projects/projects-create/projects-create.component';
 import { ContactUpdateComponent } from './Contact/contact-update/contact-update.component';
 import { ContactDetailsComponent } from './Contact/contact-details/contact-details.component';
-
+import { SelectThemeComponent } from './Theme/select-theme/select-theme.component';
 const routes: Routes = [{
   path:'', component: StartComponent,
   children:[{
@@ -24,6 +24,7 @@ const routes: Routes = [{
 {path:'contact',component: ContactDetailsComponent},
 {path:'contact/update',component: ContactUpdateComponent},
 
+{path:'themes/choose',component: SelectThemeComponent},
 
 
 

@@ -13,7 +13,7 @@ export class ProjectsDetailsComponent implements OnInit {
  nameProject:any;
  id:any;
  validateDeleteProject: boolean = true;
-  constructor( private _projectService: ProjectService, private route: ActivatedRoute) { }
+  constructor( private _projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -63,7 +63,7 @@ export class ProjectsDetailsComponent implements OnInit {
        
        Swal.fire('Project deleted','The project has been deleted', 'success')
        
-      
+      this.router.navigate(['/admin/projects/'])
         
       
         

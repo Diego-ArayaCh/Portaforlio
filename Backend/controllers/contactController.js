@@ -64,7 +64,7 @@ const contact = await ContactModel.findOneAndUpdate(
   
 
 module.exports.delete = async (req, res, next) => {
-    const contact = await AvionModel.findByIdAndRemove(req.params.id);
+    const contact = await ContactModel.findByIdAndRemove(req.params.id);
    
     if (contact) {
       res.json({ result: `contact deleted`, post: contact });

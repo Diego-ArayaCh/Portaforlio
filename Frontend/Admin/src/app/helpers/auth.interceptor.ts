@@ -10,43 +10,49 @@ import {
   import { TokenStorageService } from '../services/token-storage.service';
   import Swal from 'sweetalert2'
 import { LoaderService } from '../loader/loader.service';
+import { ThemeService } from '../services/theme.service';
   const TOKEN_HEADER_KEY = 'x-access-token'; // for Spring Boot back-end
   
   @Injectable()
   export class AuthInterceptor implements HttpInterceptor {
-    constructor(private token: TokenStorageService, public loaderService: LoaderService) {}
+    constructor(private _themeService: ThemeService,private token: TokenStorageService, public loaderService: LoaderService) {}
     
     intercept(
       req: HttpRequest<any>,
+      
       next: HttpHandler
     ): Observable<HttpEvent<any>> {
-      this.loaderService.isLoading.next(true);
+    
       let authReq = req;
       const token = this.token.getToken();
   
       console.log('Token: ' + token);
   
-      if (token != null) {
+      if (token != null) {  
         authReq = req.clone({
           headers: req.headers.set(TOKEN_HEADER_KEY, token),
         });
-      }else{
+       
         
+      }else{
+      
       }
 
       
 
 
       return next.handle(authReq).pipe(
+        
         finalize(
           () => {
-            this.loaderService.isLoading.next(false);
+          
+            
           }
         )
       )
     }
   }
-  
+
   export const authInterceptorProviders = [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ];
