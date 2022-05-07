@@ -172,18 +172,34 @@ backdrop-filter: blur(2px);
     z-index: 99;
     padding: 10px;
     border-radius: 100px 0 100px 0;
-    background-color: var(--backgroundColor1);
+    background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--primary) 100%);
+    background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+    
     border: none;
     transition: all 500ms;
     box-shadow: 10px 10px 10px #1d2028d2;
 }
 .btn-modal:hover{
+    animation: none;
+    background:rgba(0, 0, 0, 0.395);
     background-color: rgba(0, 0, 0, 0.395);
     padding: 15px;
     box-shadow: 0 4px 30px #000000bd;
-backdrop-filter: blur(2px);
+backdrop-filter: blur(6px);
 -webkit-backdrop-filter: blur(2px);
 border: 1px solid #1313134d;
 }
 
 
+@keyframes gradient {
+    0% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}

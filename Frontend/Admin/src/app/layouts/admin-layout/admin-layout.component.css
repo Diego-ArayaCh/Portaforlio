@@ -73,3 +73,15 @@ main ,.container-content, .row{
     color: var(--fontTitleColor) ;
     transition: box-shadow 500ms, color 500ms , border-radius 1500ms;
 }
+
+.active{
+    color: var(--accent);
+    border-radius: 0px 25px 0px 25px ;
+     box-shadow: 10px 10px 10px #000
+     
+}
+.active a {
+    color: var(--accent);
+   
+    box-shadow: none
+}

@@ -24,7 +24,7 @@ module.exports.signup = async (req, res, next) => {
 // logueo de usuarios
 module.exports.signin = async (req, res, next) => {
 
-  const { username, pwd , theme } = req.body;
+  const { username, pwd  } = req.body;
 
   const user = await UserModel.findOne({ username: username }).populate('theme').exec();
 
@@ -39,7 +39,7 @@ module.exports.signin = async (req, res, next) => {
         const token = jwt.sign(
           { username: username },
           config,
-          { expiresIn: "2h" }
+          { expiresIn: "4h" }
         );
         // return the information including token as JSON
         const payload = { user: user.username, _id: user._id, theme: user.theme};
@@ -70,7 +70,7 @@ module.exports.get = async (req, res, next) => {
 }
 
 
-module.exports.getById = async (req, res, next) => {
+module.exports.getById = async (req, res) => {
   const id = req.params.id;
   var user = await UserModel.findOne({ _id: id }).populate('theme').exec();
   
@@ -85,11 +85,11 @@ module.exports.getById = async (req, res, next) => {
   
 
 
-  module.exports.update = async (req, res, next) => {
+  module.exports.update = async (req, res) => {
 
    
 
-    var { username, pwd } = req.body;
+    var { username, pwd, email } = req.body;
 
     
       
@@ -102,7 +102,7 @@ module.exports.getById = async (req, res, next) => {
           const user = await UserModel.findOneAndUpdate(
       
             { _id: req.params.id },
-            { username, pwd}, // ==> {title: title, body: body}
+            { username, pwd, email}, // ==> {title: title, body: body}
             { new: true } // retornar el registro que hemos modificado con los nuevos valores
           );
       

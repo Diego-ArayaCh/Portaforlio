@@ -66,14 +66,14 @@ export class ContactUpdateComponent implements OnInit {
 
 
         this._contactService.update(this.contact._id, this.formContact.value).subscribe({
-          next: (data) => {
+          next: () => {
             this.router.navigate(['/admin/contact'])
 
 
             
           },
           error: (e) => {
-            console.log("error")
+            console.log("error", e)
           },
           complete: () => { Swal.fire('Contact Saved','The contact has been saved','success')
         

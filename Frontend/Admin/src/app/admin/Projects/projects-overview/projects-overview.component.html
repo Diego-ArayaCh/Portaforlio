@@ -1,9 +1,9 @@
 <div class="container">
     <ul class="cards row">
 
-      <li class="col-lg-3 col-md-6 col-sm-12">
+      <!-- <li class="col-lg-3 col-md-12">
         <a routerLink='/admin/projects/create' class="card new">
-          <img src="../../../../assets/images/noimage.jpg" class="card__image" alt="" />
+          <img src="../../../../assets/images/noimage.png" class="card__image" alt="" />
           <div class="card__overlay">
             <div class="card__header new">
                         
@@ -16,9 +16,9 @@
             <p class="card__description">Create a new project to portfolio</p>
           </div>
         </a>
-      </li>    
+      </li>     -->
       
-      <li *ngFor="let project of projectsArray" class=" col-lg-3 col-md-6 col-sm-12 ">
+      <li *ngFor="let project of projectsArray" class=" col-lg-3 col-md-12">
         <a routerLink='/admin/projects/details/{{project._id}}'class="card">
         
           <img [src]='project.image' class="card__image" alt="" />
@@ -38,5 +38,13 @@
        
      
       </ul>
+
+</div>
+
+<div class="btn-parent">
+  <a type="button" routerLink="/admin/projects/create"   class="btn btn-create btn-primary"  >
+     <img width="64px" height="64px" src="../../../../assets/images/add.png" alt="">
+    </a>
+    
 </div>
 

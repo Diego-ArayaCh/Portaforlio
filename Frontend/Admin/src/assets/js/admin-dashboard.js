@@ -25,3 +25,21 @@
   
   
 // }
+
+
+function setActive(HtmlElement){
+let elements = document.getElementsByClassName("active")
+
+    if(elements.length>0){
+    for (let index = 0; index < elements.length; index++) {
+        const element = elements[index];
+        element.classList.remove( "active" );
+    }
+           
+        
+       
+    }
+    HtmlElement.classList.add("active");
+
+  
+}
