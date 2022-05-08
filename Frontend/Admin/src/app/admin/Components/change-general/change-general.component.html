@@ -3,7 +3,16 @@
 <div class="card-body">
     <form [formGroup]="generalForm" (ngSubmit)="send()">
       <div class=" center-block">
-  
+        
+        <div class="col-md-12">
+          <label class="sr-only" for="text">Username</label>
+          <input formControlName="username" type="text" class="form-control" placeholder="">
+    
+          <!-- <div class="text-danger" *ngIf="userForm.get('pwd')?.hasError('required')
+                      && userForm.get('pwd')?.touched">
+                              <span class="mt-text ">Password is <strong>required</strong></span>
+                          </div> -->
+        </div>
         <div class="col-md-12 ">
           <label class="sr-only" for="email">Email</label>
           <input formControlName="email" type="email" class="form-control" placeholder="">
@@ -15,15 +24,6 @@
         </div>
       </div>
   
-      <div class="col-md-12">
-        <label class="sr-only" for="text">Username</label>
-        <input formControlName="username" type="text" class="form-control" placeholder="">
-  
-        <!-- <div class="text-danger" *ngIf="userForm.get('pwd')?.hasError('required')
-                    && userForm.get('pwd')?.touched">
-                            <span class="mt-text ">Password is <strong>required</strong></span>
-                        </div> -->
-      </div>
       <div class="col-md-12">
         <label class="sr-only" for="password">Backup Key</label>
         <input formControlName="backupKey" type="password" class="form-control" placeholder="">

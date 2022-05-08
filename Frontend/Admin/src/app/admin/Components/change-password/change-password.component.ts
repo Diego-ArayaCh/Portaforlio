@@ -4,6 +4,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { DataSharingService } from 'src/app/shared/dataSharing.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'change-password',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  constructor(  private _userService: UserService, public dataSharingService: DataSharingService, private token: TokenStorageService) { }
+  constructor( private router:Router, private _userService: UserService, public dataSharingService: DataSharingService, private token: TokenStorageService) { }
   forgotForm = new FormGroup({
     email: new FormControl('', Validators.required),
     backupKey: new FormControl('', Validators.required),
@@ -31,7 +32,7 @@ export class ChangePasswordComponent implements OnInit {
           
             Swal.fire('Password changed', data.message, 'success');
             this.token.saveUser(data.user);
-            
+            this.reloadCurrentRoute()
           } else {
            
             Swal.fire('Form invalid', data.message, 'error');
@@ -49,5 +50,12 @@ export class ChangePasswordComponent implements OnInit {
       });
     }
     
+  }
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/login', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
   }
 }
