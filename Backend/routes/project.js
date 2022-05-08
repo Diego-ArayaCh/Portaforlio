@@ -14,6 +14,7 @@ router.put("/state-change/:id",auth, projectController.state);
 router.delete('/delete-project/:id',auth, projectController.delete);
 
 router.get('/get/', projectController.get);
+router.get('/get-count/', projectController.getCount);
 
 router.get('/get/:id', projectController.getById);
 
