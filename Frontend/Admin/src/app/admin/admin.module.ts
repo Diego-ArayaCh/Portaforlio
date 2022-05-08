@@ -11,7 +11,10 @@ import { ProjectsDetailsComponent } from './Projects/projects-details/projects-d
 import { ProjectsCreateComponent } from './Projects/projects-create/projects-create.component';
 import { ContactUpdateComponent } from './Contact/contact-update/contact-update.component';
 import { ContactDetailsComponent } from './Contact/contact-details/contact-details.component';
-import { SelectThemeComponent } from './Theme/select-theme/select-theme.component';
+import {SelectThemeComponent} from './Theme/select-theme/select-theme.component'
+
+
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { SelectThemeComponent } from './Theme/select-theme/select-theme.componen
     ContactUpdateComponent,
     ContactDetailsComponent,
     SelectThemeComponent
+   
   ],
   imports: [
     CommonModule,

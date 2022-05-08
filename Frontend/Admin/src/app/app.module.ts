@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {NgHttpLoaderModule} from 'ng-http-loader'
+import { ChangeGeneralComponent } from "./admin/Components/change-general/change-general.component";
+import { ChangePasswordComponent } from "./admin/Components/change-password/change-password.component";
+import { ViewGeneralComponent } from "./admin/Components/view-general/view-general.component";
 
 
 
@@ -22,6 +25,10 @@ import {NgHttpLoaderModule} from 'ng-http-loader'
     AppComponent,
     AdminLayoutComponent,
     LoginLayoutComponent,
+    ViewGeneralComponent,
+    ChangePasswordComponent,
+    ChangeGeneralComponent,
+    
    
   ],
   imports: [
@@ -31,6 +38,7 @@ import {NgHttpLoaderModule} from 'ng-http-loader'
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    
     MatProgressSpinnerModule,
     NgHttpLoaderModule.forRoot()
     

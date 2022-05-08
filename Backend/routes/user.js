@@ -11,9 +11,10 @@ router.post("/signin", userController.signin);
 router.get('/get/', userController.get);
 
 router.put('/update-profile/:id',auth, userController.update);
+router.put('/recovery-password', userController.recovery);
 
 router.get('/get/:id',auth, userController.getById);
 
-
+router.get('/get/:email',auth, userController.getByEmail);
 
 module.exports = router;

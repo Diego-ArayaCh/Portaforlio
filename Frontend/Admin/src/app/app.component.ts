@@ -11,8 +11,8 @@ export class AppComponent {
   theme:any;
   spinnerStyle = Spinkit;
   constructor(private token:TokenStorageService){
-    this.theme = token.getUser().theme
-    console.log(this.theme)
+    this.theme = this.token.getUser().theme
+   
   }
   title = 'Admin';
 

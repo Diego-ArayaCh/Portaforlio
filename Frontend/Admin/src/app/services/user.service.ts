@@ -36,6 +36,9 @@ export class UserService {
   update(id: string, usuario: any): Observable<any> {
     return this.http.put(`${API_ENDPOINT}/update-profile/${id}`,usuario);
   }
+  recovery( form: any): Observable<any> {
+    return this.http.put(`${API_ENDPOINT}/recovery-password/`, form);
+  }
 
  
   signup(usuario: any): Observable<any> {

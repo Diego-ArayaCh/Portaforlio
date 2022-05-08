@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
 const config = "secret";
 
 // creación de nuevos usuarios
-module.exports.signup = async (req, res, next) => {
-  var {username, pwd} = req.body;
+module.exports.signup = async (req, res) => {
+  var {username, pwd, backupKey, email} = req.body;
 
 
   
@@ -16,13 +16,13 @@ module.exports.signup = async (req, res, next) => {
 
   
   
-  const User = await new UserModel({username, pwd});
+  const User = await new UserModel({username, pwd, backupKey, email});
   User.save();
   res.json(User);
 };
 
 // logueo de usuarios
-module.exports.signin = async (req, res, next) => {
+module.exports.signin = async (req, res) => {
 
   const { username, pwd  } = req.body;
 
@@ -77,6 +77,12 @@ module.exports.getById = async (req, res) => {
   res.json(user);
 };
 
+module.exports.getByEmail = async (req, res) => {
+  const email = req.params.email;
+  var user = await UserModel.findOne({ email }).populate('theme').exec();
+  
+  res.json(user);
+};
 
 
 
@@ -89,29 +95,60 @@ module.exports.getById = async (req, res) => {
 
    
 
-    var { username, pwd, email } = req.body;
+    var { username, email,backupKey } = req.body;
 
     
       
-      bcrypt.genSalt(10, function (err, salt) {
-        
-        bcrypt.hash(pwd, salt, null, async function (err, hash) {
-           
-          
-          pwd = hash;
+     
           const user = await UserModel.findOneAndUpdate(
       
             { _id: req.params.id },
-            { username, pwd, email}, // ==> {title: title, body: body}
+            { username, email,backupKey}, // ==> {title: title, body: body}
             { new: true } // retornar el registro que hemos modificado con los nuevos valores
           );
       
           
           res.json(user);
-        });
-    });
+        
+   
   
     
   };
 
- 
+  module.exports.recovery = async (req, res) => {
+
+   
+
+    var { pwd, email,backupKey } = req.body;
+
+    const userOld = await UserModel.findOne({email}).exec()
+      if(userOld){
+        if(backupKey === userOld.backupKey){
+          bcrypt.genSalt(10, function ( salt) {
+        
+            bcrypt.hash(pwd, salt, null, async function (err, hash) {
+               
+              
+              pwd = hash;
+              const user = await UserModel.findOneAndUpdate(
+          
+                { _id: userOld._id },
+                {  pwd}, // ==> {title: title, body: body}
+                { new: true } // retornar el registro que hemos modificado con los nuevos valores
+              );
+          
+              
+              res.json({ success:true, message:'The password has been changed',user:user});
+            });
+        });
+        }else{
+          res.json({success: false, message:'The backup key is invalid'})
+        }
+       
+      }else{
+        res.json({success: false, message:'The email address is not exist'})
+      }
+     
+  
+    
+  };

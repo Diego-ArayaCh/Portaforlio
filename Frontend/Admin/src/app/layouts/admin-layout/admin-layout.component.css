@@ -85,3 +85,30 @@ main ,.container-content, .row{
    
     box-shadow: none
 }
+
+.offcanvas-body, view-general, change-password, change-general, .accordion-item{
+    background-color: var(--deepBackground);
+    color: var(--fontContentColor);
+}
+.offcanvas-header{
+    background-color: var(--backgroundColor1);
+    background: linear-gradient(45deg, var(--backgroundColor1) 0%, var(--primary) 100%);
+    background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+  color: var(--fontTitleColor);
+  
+    
+    padding: 0.4rem 0.8rem;
+
+}
+.offcanvas-header .btn-close{
+    animation: none;
+ 
+    background-color: rgba(255, 255, 255, 0.395);
+    padding: 2vh;
+    box-shadow: 0 4px 30px #000000bd;
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(2px);
+border: 1px solid #1313134d;
+    
+}

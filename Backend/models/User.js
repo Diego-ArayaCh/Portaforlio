@@ -14,6 +14,9 @@ const UserSchema = new Schema({
   pwd: {
     type: String,
   },
+  backupKey: {
+    type: String,
+  },
   theme: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Theme'

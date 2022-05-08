@@ -31,3 +31,11 @@
   background-color: #94bbe9;
   border-color: transparent
 }
+
+.forgot-password {
+  cursor: pointer;
+  color: #eec5ae
+}
+.forgot-password:hover{
+  color: #94bbe9
+}

@@ -1,0 +1,28 @@
+
+  
+  
+  /* bootstrap classes */
+  .card {
+    background-color: rgba(0, 0, 0, 0.395);
+  
+    box-shadow: 0 4px 30px #000000bd;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid #1313134d;
+    color: #fff;
+  }
+  
+  .btn-primary {
+  
+    background-color: #94bbe9;
+    border-color: transparent
+  }
+  
+  .forgot-password {
+    cursor: pointer;
+    color: #eec5ae
+  }
+  .forgot-password:hover{
+    color: #94bbe9
+  }
+  

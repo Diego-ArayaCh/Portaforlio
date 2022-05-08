@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://portfolio-jd-dev.herokuapp.com'
+  apiUrl: 'http://localhost:8080'
 };
 
 /*
