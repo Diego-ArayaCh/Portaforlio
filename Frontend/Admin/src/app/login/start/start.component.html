@@ -3,7 +3,7 @@
     <forgot-password *ngIf="dataSharingService.showForgot | async" class="card form-login  col-xl-4  col-sm-12 col-md-12 col-lg-5" ></forgot-password>
 
     <div *ngIf="dataSharingService.showNormal | async" class="card form-login  col-xl-4  col-sm-12 col-md-12 col-lg-5">
-      <div class="card-header text-center">Login<img src="../../../assets/images/logo.png" alt="logo" width="90"
+      <div class="card-header text-center">Login<img src="../../../assets/images/logo.png" alt="logo" width="80"
           height="70" class=" mx-sm-4 d-sm-inline"></div>
       <div class="card-body">
         <form [formGroup]="userForm" (ngSubmit)="send()">

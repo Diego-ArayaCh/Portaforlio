@@ -16,6 +16,8 @@ import {NgHttpLoaderModule} from 'ng-http-loader'
 import { ChangeGeneralComponent } from "./admin/Components/change-general/change-general.component";
 import { ChangePasswordComponent } from "./admin/Components/change-password/change-password.component";
 import { ViewGeneralComponent } from "./admin/Components/view-general/view-general.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -40,7 +42,13 @@ import { ViewGeneralComponent } from "./admin/Components/view-general/view-gener
     FormsModule,
     
     MatProgressSpinnerModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
     
 
   ],
