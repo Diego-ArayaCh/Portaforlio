@@ -16,7 +16,7 @@ router.delete('/delete-project/:id',auth, projectController.delete);
 router.get('/get/', projectController.get);
 
 router.get('/get/:id', projectController.getById);
-
+router.get('/get-count/', projectController.getCount);
 
 
 module.exports = router;

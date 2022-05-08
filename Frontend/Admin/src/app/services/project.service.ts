@@ -46,7 +46,9 @@ export class ProjectService {
   changeState(id: string, project: any): Observable<any> {
     return this.http.put(`${API_ENDPOINT}/state-change/${id}`,project);
   }
-
+  getCount(): Observable<any> {
+    return this.http.get(`${API_ENDPOINT}/get-count/`, httpOptions);
+  }
  
  
 
