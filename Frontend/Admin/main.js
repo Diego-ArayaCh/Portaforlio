@@ -7,8 +7,7 @@ function createWindow (){
       width: 600,
       height: 600,
       resizable: true,
-      backgroundColor: '#212529',
-      icon: `file://${__dirname}/dist/admin/assets/images/logo.png`,
+      backgroundColor: '#212529'
 
   })
   win.setMenu(null);
