@@ -16,7 +16,7 @@ export class LoaderService {
      this.label= new BehaviorSubject<string>(this.label + value);
    }
    public   setBoolean(value: boolean) {
-     console.log(value);
+     
     this.isLoading= new BehaviorSubject<boolean>(value);
   }
 }

@@ -26,7 +26,7 @@ export class AdminGuard implements CanActivate {
     | boolean
     | UrlTree {
       const isAuthenticated = !!this.tokenStorageService.getToken();
-    console.log(isAuthenticated)
+    
     if (!isAuthenticated) {
       // redirect the user to the login page
       this.router.navigate(['/sign-in']);

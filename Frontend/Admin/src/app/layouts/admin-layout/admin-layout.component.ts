@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader/loader.service';
-import { ThemeService } from 'src/app/services/theme.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { DataSharingService } from 'src/app/shared/dataSharing.service';
@@ -11,32 +9,23 @@ import { DataSharingService } from 'src/app/shared/dataSharing.service';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent implements OnInit {
-  themes: any[] = [];
+  
   activeTheme:any;
 
   constructor(public dataSharingService: DataSharingService,
-    private _themeService: ThemeService,
-    private _userService: UserService, private router: Router, private token: TokenStorageService, public loaderService:LoaderService) { }
+   
+    private _userService: UserService, private router: Router, private token: TokenStorageService) { }
 
   ngOnInit(): void {
    
-    this.loaderService.setBoolean(false);
-    this._themeService.get().subscribe({
-      next: async(data) => {
-        this.themes = await data
-     
-      
-      
-        
-      },
-      error(err) { console.log('Received an error: ' + err)}
-    });
+    
+    
    this.loadTheme();
   }
  
   loadTheme(){
  
-    console.log('Loading theme')
+    
     this._userService.getById(this.token.getUser()._id).subscribe({
       next: async(data) => {
         this.token.saveUser(data);
@@ -53,7 +42,7 @@ export class AdminLayoutComponent implements OnInit {
         this.dataSharingService.themeActive.next(data.theme.name)
         
       },
-      error(err) { console.log( err)}
+      error(err) { }
     });
   
    

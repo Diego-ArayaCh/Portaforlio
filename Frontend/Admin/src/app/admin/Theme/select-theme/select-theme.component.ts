@@ -5,7 +5,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { DataSharingService } from 'src/app/shared/dataSharing.service';
 
 @Component({
-  selector: 'app-select-theme',
+  selector: 'change-theme',
   templateUrl: './select-theme.component.html',
   styleUrls: ['./select-theme.component.css']
 })
@@ -29,7 +29,7 @@ export class SelectThemeComponent implements OnInit {
       
         
       },
-      error(err) { console.log('Received an error: ' + err)}
+      error(err) {}
     });
   }
   changeTheme(theme:any){
@@ -44,7 +44,7 @@ export class SelectThemeComponent implements OnInit {
     root.style.setProperty('--deepBackground', theme.deepBackground )
 
 const user = this.token.getUser();
-console.log(user)
+
       this._themeService.saveTheme(theme._id, user).subscribe({
       next: async(data) => {
         
@@ -53,7 +53,7 @@ console.log(user)
       
         
       },
-      error(err) { console.log('Received an error: ' + err)}
+      error(err) {}
     });
     this.dataSharingService.themeActive.next(theme.name);
   }

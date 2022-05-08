@@ -62,7 +62,7 @@ export class ProjectsCreateComponent implements OnInit {
            
           },
           error: (e) => {
-            console.log("error")
+           
           },
           complete: () => console.info('complete')
         });
@@ -83,7 +83,7 @@ export class ProjectsCreateComponent implements OnInit {
     
     this.getBase64(image).then((image: any) =>{
       this.preview = image.base;
-      console.log(image.base); 
+      
     });
     
     

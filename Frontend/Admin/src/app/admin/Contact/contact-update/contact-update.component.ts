@@ -101,7 +101,7 @@ export class ContactUpdateComponent implements OnInit {
     
     this.getBase64(image).then((image: any) =>{
       this.preview = image.base;
-      console.log(image.base); 
+      
     });
     
     

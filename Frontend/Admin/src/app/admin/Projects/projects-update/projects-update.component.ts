@@ -54,7 +54,7 @@ export class ProjectsUpdateComponent implements OnInit {
       
         
       },complete() {},
-      error(err) { console.log('Received an error: ' + err)}
+      error(err) { }
     });
     
   }
@@ -89,7 +89,7 @@ export class ProjectsUpdateComponent implements OnInit {
            
           },
           error: (e) => {
-            console.log("error")
+           
           },
           complete: () => { Swal.fire('Project Saved','The project has been saved','success')
         
@@ -115,7 +115,7 @@ export class ProjectsUpdateComponent implements OnInit {
     
     this.getBase64(image).then((image: any) =>{
       this.preview = image.base;
-      console.log(image.base); 
+     
     });
     
     

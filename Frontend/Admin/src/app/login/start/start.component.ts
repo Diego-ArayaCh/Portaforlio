@@ -1,20 +1,22 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { UserService } from 'src/app/services/user.service';
 
 import { TokenStorageService } from '../../services/token-storage.service';
-import { ThemeService } from 'src/app/services/theme.service';
+
 import { DataSharingService } from 'src/app/shared/dataSharing.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css']
 })
 export class StartComponent implements OnInit {
-  theme:any;
+  
+ 
   userForm = new FormGroup({
 
     username: new FormControl('', Validators.required),
@@ -23,17 +25,19 @@ export class StartComponent implements OnInit {
 
 
   });
+  
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
 
   constructor(private tokenStorage: TokenStorageService,
-     private sanitizer: DomSanitizer,
+     
       private _userService: UserService,
        private router: Router, 
-       private _themeService: ThemeService, private token: TokenStorageService, public dataSharingService:DataSharingService) { }
-      activeTheme:any;
+         public dataSharingService:DataSharingService) { }
+     
   ngOnInit(): void {
+   
 
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -48,13 +52,16 @@ export class StartComponent implements OnInit {
 
 
 
-  
+  showForgot(){
+    this.dataSharingService.showForgot.next(true)
+    this.dataSharingService.showNormal.next(false)
+  }
   send(): void {
 
     if (this.userForm.valid) {
 
       const user = this.userForm.value;
-      console.log(user);
+      
       
 
       try {
@@ -73,7 +80,7 @@ export class StartComponent implements OnInit {
               
             
             } else {
-              console.log("error")
+              
               this.errorMessage = data.msg;
               this.isLoginFailed = true;
 
@@ -87,6 +94,7 @@ export class StartComponent implements OnInit {
           error: (e) => {
             this.errorMessage = e.msg;
             this.isLoginFailed = true
+            Swal.fire('login failed', 'The server not answer','error')
           },
           complete: () => console.info('complete')
         });
@@ -101,32 +109,9 @@ export class StartComponent implements OnInit {
 
     } else {
       //alerts
-
+      Swal.fire('login failed', 'The form is invalid','error')
     }
 
   }
-  loadTheme(){
- 
-    
-    this._userService.getById(this.token.getUser()._id).subscribe({
-      next: async(data) => {
-        this.token.saveUser(data);
-        this.activeTheme = data.theme
-        let root = document.documentElement;
-        root.style.setProperty('--primary', this.activeTheme.primary )
-      
-        root.style.setProperty('--accent', this.activeTheme.accent )
-        root.style.setProperty('--backgroundColor1', this.activeTheme.backgroundColor1 )
-        root.style.setProperty('--backgroundColor2', this.activeTheme.backgroundColor2 )
-        root.style.setProperty('--fontContentColor', this.activeTheme.fontContentColor )
-        root.style.setProperty('--fontTitleColor', this.activeTheme.fontTitleColor )
-        root.style.setProperty('--deepBackground', this.activeTheme.deepBackground )
-        this.dataSharingService.themeActive.next(data.theme.name)
-        
-      },
-      error(err) { console.log( err)}
-    });
-  
-   
-  }
+
 }

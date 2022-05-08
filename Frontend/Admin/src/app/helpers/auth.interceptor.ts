@@ -26,7 +26,7 @@ import { ThemeService } from '../services/theme.service';
       let authReq = req;
       const token = this.token.getToken();
   
-      console.log('Token: ' + token);
+     
   
       if (token != null) {  
         authReq = req.clone({
@@ -41,15 +41,7 @@ import { ThemeService } from '../services/theme.service';
       
 
 
-      return next.handle(authReq).pipe(
-        
-        finalize(
-          () => {
-          
-            
-          }
-        )
-      )
+      return next.handle(authReq)
     }
   }
 

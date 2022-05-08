@@ -23,8 +23,10 @@ activeTheme:any;
     private _projectService: ProjectService, private token: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.loadCards()
+  
      this.theme = this.token.getUser().theme
+     this.numProjects = 2;
+     this.numVisits = 23
   }
 
   loadCards() {
@@ -45,7 +47,7 @@ activeTheme:any;
       
         
       },
-      error(err) { console.log('Received an error: ' + err)}
+      error(err) { }
     });
   
       this.numVisits = 900
