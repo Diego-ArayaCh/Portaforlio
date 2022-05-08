@@ -15,7 +15,7 @@ export class AdminLayoutComponent implements OnInit {
   constructor(public dataSharingService: DataSharingService,
    
     private _userService: UserService, private router: Router, private token: TokenStorageService) { }
-
+    
   ngOnInit(): void {
    
     
@@ -29,7 +29,7 @@ export class AdminLayoutComponent implements OnInit {
     this._userService.getById(this.token.getUser()._id).subscribe({
       next: async(data) => {
         this.token.saveUser(data);
-        this.activeTheme = data.theme
+        this.activeTheme = data.theme;
         let root = document.documentElement;
         root.style.setProperty('--primary', this.activeTheme.primary )
       
