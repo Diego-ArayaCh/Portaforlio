@@ -20,7 +20,12 @@ var project = await ProjectModel.findOne({ _id: id }).exec();
 
 res.json(project);
 };
+module.exports.getCount = async (req, res, next) => {
 
+  var project = await ProjectModel.find().count();
+
+  res.json(project);
+  };
 
 
 module.exports.create =  (req, res, next) => {

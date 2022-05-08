@@ -25,17 +25,15 @@ activeTheme:any;
   ngOnInit(): void {
   
      this.theme = this.token.getUser().theme
-     this.numProjects = 2;
-     this.numVisits = 23
+     this.loadCards()
   }
 
   loadCards() {
    
     
-
-    this._projectService.get().subscribe({
+    this._projectService.getCount().subscribe({
       next: async(data) => {
-        this.numProjects = data.length;
+        this.numProjects = data
         
         // if (data) {
         //   for (let index = 0; index < data.length; index++) {
