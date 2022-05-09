@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
+
+:root {
+  --accent: #FC8019;
+  --deep: #fff;
+  --primary: #94bbe9;
+  --backgroundColor1: #3e454e;
+  --backgroundColor2: #8f8f8f;
+  --fontTitleColor: #ffffff;
+  --deepBackground: #fff;
+  --surface-color: var(--fontTitleColor);
+  --curve: 40;
+  overflow: auto;
+}
+
+
+
+router-outlet {
+  background-color: var(--deep);
+}
+
+html,
+body {
+  height: 100%;
+  background: #272829 !important;
+  
+  color: rgb(230, 230, 230) !important
+}
+
+body {
+
+  font-size: medium !important;
+  margin: 0;
+
+  font-family: 'Encode Sans Condensed', sans-serif !important;
+}
+
+body {
+  padding-top: 15vh;
+}

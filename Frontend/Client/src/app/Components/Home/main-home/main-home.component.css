@@ -1,0 +1,102 @@
+.imageContact {
+
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  object-fit: fill;
+  border-radius: 500px 0px 1000px 2000px;
+
+  width: 50%;
+  box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.678);
+  background: rgb(147, 147, 147);
+}
+
+.container-img {
+
+  width: 50%;
+  height: auto;
+  padding: 0;
+
+  /* border-radius: 0 20000px 20px 0; */
+
+  border-radius: 0 0px 1000px 2000px;
+  background: #780000;
+  z-index: -1;
+
+
+}
+
+
+.title {
+  color: #ffffff;
+  
+  border-bottom: 7px solid #939393;
+  text-align: center;
+  background-color: #272829;
+}
+
+.dev{
+    font-weight: 900;
+    box-shadow: 10px #939393;
+}
+
+
+
+
+
+
+
+@media (min-width: 0px) {
+  .container-img {
+    width: 100%;
+  }
+
+  .imageContact {
+    width: 99%;
+  }
+}
+
+@media (min-width: 576px) {
+  .container-img {
+    width: 100%;
+  }
+
+  .imageContact {
+    width: 90%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container-img {
+    width: 80%;
+  }
+
+  .imageContact {
+    width: 79%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container-img {
+    width: 60%;
+  }
+
+  .imageContact {
+    width: 80%;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container-img {
+    width: 40%;
+  }
+
+  .imageContact {
+    width: 79%;
+  }
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
