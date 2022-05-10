@@ -4,19 +4,19 @@
             <img src="../../../assets/images/icon-512x512.png" alt="logo" width="80"
           height="70" class=" mx-sm-4 d-sm-inline">
           </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class=" collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li  class="nav-item">
-            <a [routerLink]="['/']" routerLinkActive="router-link-active"   id="home" #home  class="nav-link active" aria-current="page" href="#">Home</a>
+            <a [routerLink]="['/']" routerLinkActive="router-link-active" onclick="document.getElementById('toggle').click()"  id="home" #home  class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li  class="nav-item">
-            <a [routerLink]="['/projects']" id="projects" #projects  class="nav-link" href="#">Projects</a>
+            <a [routerLink]="['/projects']" id="projects" #projects onclick="document.getElementById('toggle').click()" class="nav-link" href="#">Projects</a>
           </li>
           <li  class="nav-item">
-            <a [routerLink]="['/contact']" id="contact" #contact  class="nav-link" href="#">Contact</a>
+            <a [routerLink]="['/contact']" id="contact" #contact onclick="document.getElementById('toggle').click()" class="nav-link" href="#">Contact</a>
           </li>
          
         </ul>

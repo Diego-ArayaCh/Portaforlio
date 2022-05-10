@@ -1,5 +1,5 @@
 .bg-light {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: #00000057 !important;
   border-radius: 0 0 16px 16px !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(11.8px) !important;
@@ -14,7 +14,7 @@
 
 .navbar-nav>li {
 
-  font-size: x-large !important;
+  font-size: medium !important;
 }
 
 .navbar-collapse>ul >li{
@@ -68,7 +68,7 @@
 .nav-link:after {
   display: block;
   content: '';
-  border-bottom: solid 3px #b60101;
+  border-bottom: solid 3px var(--primary);
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
   

@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import { MainHomeComponent } from './Components/Home/main-home/main-home.component';
 import { ProjectDetailsComponent } from './Components/Projects/project-details/project-details.component';
@@ -37,7 +38,8 @@ import { OverviewProjectsComponent } from './Components/Projects/overview-projec
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgHttpLoaderModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

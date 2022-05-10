@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { SessionStorageService } from './services/SessionStorageService';
-
+import { Spinkit } from 'ng-http-loader';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +10,10 @@ import { SessionStorageService } from './services/SessionStorageService';
 export class AppComponent {
   oldActive: any;
   element: any;
+  public spinkit = Spinkit;
   constructor(private router: Router, private session: SessionStorageService) {
+   
+
     this.router.events.subscribe((event: any): void => {
       if (event instanceof NavigationStart) {
        

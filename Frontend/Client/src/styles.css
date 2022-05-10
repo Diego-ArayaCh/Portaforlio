@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 
 :root {
-  --accent: #FC8019;
-  --deep: #fff;
-  --primary: #94bbe9;
-  --backgroundColor1: #3e454e;
-  --backgroundColor2: #8f8f8f;
-  --fontTitleColor: #ffffff;
-  --deepBackground: #fff;
-  --surface-color: var(--fontTitleColor);
+  
   --curve: 40;
+  --primary: #00b6c0;
   overflow: auto;
 }
 
@@ -29,7 +23,7 @@ body {
 
 body {
 
-  font-size: medium !important;
+  font-size: small !important;
   margin: 0;
 
   font-family: 'Encode Sans Condensed', sans-serif !important;

@@ -1,13 +1,29 @@
-<div class="container-img col-sm-12 container">
+<!-- <div class="container-img col-sm-12 container">
     <h1 class="title" >I'm <span class="dev">Developer</span> </h1>
   <img class="imageContact col-sm-12" src="{{imgContact}}" alt="">
   
 </div>
 <div class="container">
   <div class="row">
-    <div col-sm-12 col-md-6 col-lg-3>
-        <h2>Who I am?</h2>
-      <h4>{{description}}</h4>
+   
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class=" mb-5 col-lg-6 col-md-6 col-sm-12">
+      <img class="imageContact col-sm-12" src="{{imgContact}}" alt="">
+    </div>
+    <div  class="text-container col-lg-6 col-md-6 col-sm-12">
+
+     <div>
+      <h3>Who <span class="dec">I am?</span> </h3>
+      
+        <h4 *ngIf="imgContact" >{{description}}</h4>
+     
+    
+     </div>
+
     </div>
   </div>
 </div>
