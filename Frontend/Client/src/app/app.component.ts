@@ -61,13 +61,12 @@ export class AppComponent implements OnInit{
       }
     });
 
-    console.log(this.session.getPage());
-
+   
   }
 
   
   ngOnInit(){
-    console.log(this.session.getPage());
+   
     
     $(window).scroll(function() {
       var top_of_element = $("#footer").offset().top;
@@ -76,7 +75,7 @@ export class AppComponent implements OnInit{
       var top_of_screen = $(window).scrollTop();
       var element = $('.active')
 
-      console.log(element.get(0).id)
+     
       if(element.get(0).id !='contact'){
         localStorage.setItem('oldActive',element.get(0).id );
       }
