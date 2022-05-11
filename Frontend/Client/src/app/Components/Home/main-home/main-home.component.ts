@@ -16,7 +16,7 @@ export class MainHomeComponent implements OnInit {
 
   }
   loadImg(){
-    this._contactService.get().subscribe({
+    this._contactService.getHeavy().subscribe({
       next: async(data)=>{
           this.imgContact = await data[0].image
           this.description = await data[0].description

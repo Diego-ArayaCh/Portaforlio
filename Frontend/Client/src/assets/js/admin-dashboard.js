@@ -1,3 +1,24 @@
+function sendEmail(){
+    console.log('entraS')
+    Email.send({
+        SecureToken : "9f2086a6-09f0-4453-981c-9c74b45d5664",
+        To : 'juandiegoa907@gmail.com',
+        From : "portfoliojdev@gmail.com",
+        Subject : "This is the subject",
+        Body : "And this is the body"
+    }).then(
+      message => alert(message)
+    );
+}
+
+
+
+
+
+
+
+
+
 // var i =0;
 // function changeTheme(){
 //   let root = document.documentElement;

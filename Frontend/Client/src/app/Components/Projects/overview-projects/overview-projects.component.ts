@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/app/services/project.service';
 import { SessionStorageService } from 'src/app/services/SessionStorageService';
 
 @Component({
@@ -7,15 +8,18 @@ import { SessionStorageService } from 'src/app/services/SessionStorageService';
   styleUrls: ['./overview-projects.component.css']
 })
 export class OverviewProjectsComponent implements OnInit {
-
-  constructor(private session:SessionStorageService) { }
+  projects:any [] = []
+  constructor(private _projectsService: ProjectService ,private session:SessionStorageService) { }
 
   ngOnInit(): void {
-    if (this.session.getPage()) {
-      let page = {index: 'projects', url:'/projects'}
-      
-      this.session.savePage(page)
-    }
+    this.loadCards()
+  }
+  loadCards() {
+    this._projectsService.get().subscribe({
+      next: async (data) =>{
+        this.projects = data
+      }
+    })
   }
 
 }

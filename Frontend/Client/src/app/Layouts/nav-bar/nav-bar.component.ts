@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { SessionStorageService } from 'src/app/services/SessionStorageService';
 
 @Component({
@@ -20,7 +21,9 @@ export class NavBarComponent implements OnInit {
   
   
  }
-
+toContact(){
+  document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'})
+}
 //  saveIndex(index:any){
 //   let elementActive = index as HTMLElement
 //   let element =  document.getElementsByClassName('active')

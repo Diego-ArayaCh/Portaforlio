@@ -19,6 +19,12 @@ export class ContactService {
     return this.http.get(`${API_ENDPOINT}/get/`);
   }
  
+  getInfo(): Observable<any> {
+    return this.http.get(`${API_ENDPOINT}/get-info/`);
+  }
+  getHeavy(): Observable<any> {
+    return this.http.get(`${API_ENDPOINT}/get-heavy/`);
+  }
 
   
 

@@ -68,9 +68,9 @@
 .nav-link:after {
   display: block;
   content: '';
-  border-bottom: solid 3px var(--primary);
+  border-bottom: solid 2px var(--primary);
   transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in;
   
 }
 
@@ -98,4 +98,8 @@
     transition: none;
     transform: none;
     transform-origin: none;
+  }
+
+  #contact{
+    cursor: pointer;
   }

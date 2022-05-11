@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'layout-footer',
@@ -7,11 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 year:any
-  constructor() { }
+contact:any;
+formProject = new FormGroup({
+  email: new FormControl('', Validators.required),
+  message: new FormControl('', Validators.required)
+  
+
+
+
+});
+  constructor(private _contactService:ContactService) {
+
+    this._contactService.getInfo().subscribe({
+      next: (data) =>{
+        this.contact = data[0]
+        console.log(this.contact);
+        
+      }
+    })
+
+   }
 
   ngOnInit(): void {
     const currentYear = new Date().getFullYear();
     this.year = currentYear
   }
 
+  sendEmail(){
+
+  }
 }

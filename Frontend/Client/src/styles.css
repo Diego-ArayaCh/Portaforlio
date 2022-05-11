@@ -18,15 +18,15 @@ body {
   height: 100%;
   background: #272829 !important;
   
-  color: rgb(230, 230, 230) !important
+  color: rgb(230, 230, 230) 
 }
 
 body {
 
-  font-size: small !important;
+  font-size: small ;
   margin: 0;
 
-  font-family: 'Encode Sans Condensed', sans-serif !important;
+  font-family: 'Encode Sans Condensed', sans-serif ;
 }
 
 body {

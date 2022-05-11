@@ -9,9 +9,40 @@
   
   .footer {
     
-   
+   color: #fff;
     padding: 1rem;
     background-color: #6c6c6c;
     text-align: center;
     
+  }
+
+  .btn-dark{
+    background-color: #272829;
+    border: none;
+    
+  }
+  .btn-dark:hover{
+    background-color: var(--primary);
+    
+  }
+
+  .link{
+   padding-left: 6px;
+   
+    color: rgb(66, 66, 66);
+   transition: border-botton 600ms ease;
+  }
+  .link:hover{
+   color: var(--primary);
+    
+    
+  }
+
+  .title{
+    display: inline;
+    background-color: #272829;
+    color: #fff;
+    border-radius: 0 10px 10px 1000px ;
+    padding-left: 30px;
+    padding-right: 4px;
   }

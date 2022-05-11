@@ -10,6 +10,16 @@ module.exports.get = async (req, res, next) => {
     const contact = await ContactModel.find().exec();
     res.json(contact);
 }
+module.exports.getInfo = async (req, res, next) => {
+    
+  const contact = await ContactModel.find({}, 'name lastName email linkedInLink phoneNumber').exec();
+  res.json(contact);
+}
+module.exports.getHeavy = async (req, res, next) => {
+    
+  const contact = await ContactModel.find({}, 'description image').exec();
+  res.json(contact);
+}
 
 module.exports.getById = async (req, res, next) => {
 const id = req.params.id;
