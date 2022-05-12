@@ -41,7 +41,7 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
-  
+    box-shadow: 5px 7px 5px 4px #000000a9;
     margin-bottom: 5%;
 }
 

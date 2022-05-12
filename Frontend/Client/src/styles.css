@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 
 :root {
-  --fontColor: #fff;
+  --fontColor: rgb(255, 255, 255);
   --deep: #272829;
+  
   --curve: 40;
   --primary: #00b6c0;
+  /* --primary: #872929; */
   overflow: auto;
 }
 
