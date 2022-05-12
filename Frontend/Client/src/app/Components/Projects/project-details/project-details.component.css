@@ -58,21 +58,32 @@
     white-space: pre-wrap;
     word-break: break-word;
     margin-bottom: 10rem;
-   color:#fff
+   color:var(--fontColor)
 }
 
 
 .title{
-   display: inline-block;
-   font-weight: bold;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--fontColor) !important;
+    border-bottom: 3px solid var(--primary);
 }
 .container-header{
+   
     display: flex;
+    
     justify-content: center;
+    align-items: center;
+   
    
 }
 .header {
    text-align: center;
-    color: #fff;
+    color: var(--fontColor);
 }
+
+
+
 

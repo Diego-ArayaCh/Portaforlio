@@ -21,6 +21,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { MainHomeComponent } from './Components/Home/main-home/main-home.component';
 import { ProjectDetailsComponent } from './Components/Projects/project-details/project-details.component';
 import { OverviewProjectsComponent } from './Components/Projects/overview-projects/overview-projects.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { OverviewProjectsComponent } from './Components/Projects/overview-projec
     BrowserAnimationsModule,
     NgHttpLoaderModule.forRoot()
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

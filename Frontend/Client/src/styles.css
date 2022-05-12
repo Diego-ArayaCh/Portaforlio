@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 
 :root {
-  
+  --fontColor: #fff;
+  --deep: #272829;
   --curve: 40;
   --primary: #00b6c0;
   overflow: auto;
@@ -9,16 +10,14 @@
 
 
 
-router-outlet {
-  background-color: var(--deep);
-}
+
 
 html,
 body {
   height: 100%;
-  background: #272829 !important;
+  background: var(--deep) !important;
   
-  color: rgb(230, 230, 230) 
+  color: var(--fontColor) !important
 }
 
 body {
@@ -31,4 +30,18 @@ body {
 
 body {
   padding-top: 15vh;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(31, 31, 31);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(67, 67, 67);    /* color of the scroll thumb */
+  border-radius: 5px;       /* roundness of the scroll thumb */
+  border: 1px rgba(67, 67, 67, 0.614);  /* creates padding around scroll thumb */
 }

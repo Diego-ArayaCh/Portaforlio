@@ -1,12 +1,15 @@
-<layout-navbar></layout-navbar>
+<span id="top"></span>
 
-<router-outlet></router-outlet>
+    <layout-navbar></layout-navbar>
 
-<layout-footer ></layout-footer>
-<ng-http-loader
+    <router-outlet></router-outlet>
+    
+    <layout-footer ></layout-footer>
+    <ng-http-loader
+    
+    [backdropBackgroundColor]="'#272829'"
+        [spinner]="spinkit.skCubeGrid" 
+        [opacity]="'1.0'" 
+        [backgroundColor]="'#00b6c0'"
+    ></ng-http-loader>
 
-[backdropBackgroundColor]="'#272829'"
-    [spinner]="spinkit.skCubeGrid" 
-    [opacity]="'1.0'" 
-    [backgroundColor]="'#00b6c0'"
-></ng-http-loader>

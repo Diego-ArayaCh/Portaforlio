@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { SessionStorageService } from 'src/app/services/SessionStorageService';
 
@@ -10,7 +10,7 @@ import { SessionStorageService } from 'src/app/services/SessionStorageService';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router:Router,private session:SessionStorageService) { }
+  constructor(private route: ActivatedRoute,private router:Router,private session:SessionStorageService) { }
 
   ngOnInit(): void {
    
@@ -22,7 +22,35 @@ export class NavBarComponent implements OnInit {
   
  }
 toContact(){
+  
+
+
+
   document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'})
+}
+toProjects(){
+  if(this.router.url =='/projects'){
+   
+    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+  }else{
+   
+    this.router.navigate(['/projects'])
+  
+  }
+  
+}
+toHome(){
+  if(this.router.url =='/'){
+    
+    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+    
+  }else{
+    
+    this.router.navigate(['/'])
+   
+    
+  }
+  
 }
 //  saveIndex(index:any){
 //   let elementActive = index as HTMLElement

@@ -13,6 +13,7 @@ export class MainHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadImg();
+    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
 
   }
   loadImg(){
