@@ -27,6 +27,7 @@ toContact(){
 
 
   document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'})
+  document.getElementById('navbarNav')?.classList.remove('show')
 }
 toProjects(){
   if(this.router.url =='/projects'){
@@ -37,7 +38,7 @@ toProjects(){
     this.router.navigate(['/projects'])
   
   }
-  
+  document.getElementById('navbarNav')?.classList.remove('show')
 }
 toHome(){
   if(this.router.url =='/'){
@@ -50,6 +51,7 @@ toHome(){
    
     
   }
+  document.getElementById('navbarNav')?.classList.remove('show')
   
 }
 //  saveIndex(index:any){
