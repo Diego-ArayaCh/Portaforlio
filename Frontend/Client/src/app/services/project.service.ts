@@ -20,7 +20,10 @@ export class ProjectService {
    
     return this.http.get(`${API_ENDPOINT}/get/`, httpOptions);
   }
- 
+  getActive(): Observable<any> {
+   
+    return this.http.get(`${API_ENDPOINT}/get-active/`, httpOptions);
+  }
 
   getById(id: string): Observable<any> {
     

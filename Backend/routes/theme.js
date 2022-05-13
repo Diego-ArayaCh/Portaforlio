@@ -10,7 +10,7 @@ const themeController = require("../controllers/themeController");
 
 
 
-router.post("/create" ,themeController.create);
+router.post("/create" ,auth,themeController.create);
 
 
 

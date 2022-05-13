@@ -4,14 +4,14 @@ const auth = require("../middleware/auth");
 
 const userController = require("../controllers/userController");
 
-router.post("/signup", userController.signup);
+router.post("/signup",auth, userController.signup);
 
 router.post("/signin", userController.signin);
 
-router.get('/get/', userController.get);
+router.get('/get/',auth, userController.get);
 
 router.put('/update-profile/:id',auth, userController.update);
-router.put('/recovery-password', userController.recovery);
+router.put('/recovery-password',auth, userController.recovery);
 
 router.get('/get/:id',auth, userController.getById);
 

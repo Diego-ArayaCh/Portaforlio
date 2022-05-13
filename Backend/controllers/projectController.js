@@ -13,6 +13,14 @@ module.exports.get = async (req, res, next) => {
 
 
 }
+module.exports.getActive = async (req, res, next) => {
+    
+  const project = await ProjectModel.find({state: 1}).exec();
+  res.json(project);
+
+
+
+}
 
 module.exports.getById = async (req, res, next) => {
 const id = req.params.id;

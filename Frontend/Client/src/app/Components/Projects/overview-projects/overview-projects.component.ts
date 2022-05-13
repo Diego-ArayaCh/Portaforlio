@@ -21,7 +21,7 @@ export class OverviewProjectsComponent implements OnInit,AfterViewInit {
   
   }
   loadCards() {
-    this._projectsService.get().subscribe({
+    this._projectsService.getActive().subscribe({
       next: async (data) =>{
         this.projects = data
       }
