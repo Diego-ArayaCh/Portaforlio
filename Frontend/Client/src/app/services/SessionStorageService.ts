@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const PAGE = 'nav-index';
 const USER_KEY = 'auth-user';
-
+const THEME = 'theme-user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,23 @@ export class SessionStorageService {
   signOut(): void {
   
     window.sessionStorage.clear();
+  }
+
+  public saveTheme(theme: any): void {
+    window.sessionStorage.removeItem(THEME);
+    window.sessionStorage.setItem(THEME,  JSON.stringify(theme));
+  }
+
+
+
+  public getTheme():any {
+    const theme = window.sessionStorage.getItem(THEME);
+    if (theme) {
+     
+      return JSON.parse(theme);
+    }
+
+    return null;
   }
 
   public savePage(page: any): void {

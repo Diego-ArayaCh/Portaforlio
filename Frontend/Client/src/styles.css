@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 
 :root {
-  --fontColor: rgb(255, 255, 255);
+  --fontColor: #ffffff;
   --deep: #272829;
   
   --curve: 40;

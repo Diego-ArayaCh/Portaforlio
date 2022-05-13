@@ -102,6 +102,29 @@
  transition: transform 250ms ease-in;
  
 }
+.contactRef::before {
+  transition: all 2s ease-in;
+  -webkit-transition: all 2s ease-in;
+
+  position: absolute;
+content: 'visible';
+font-size: xx-small;
+display: block;
+width: 30px;
+height: 10px;
+
+top: 82px;
+
+border-top: 3px solid var(--primary);
+border-bottom: 10px solid transparent;
+border-radius: 100000px 100000px 100px 0 ;
+transition: transform 250ms ease-in;
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  transform-origin: 0% 50%;
+  -webkit-transform-origin : 0% 50%;
+  
+ }
 
 
 .myLink:hover:after {
@@ -149,6 +172,18 @@
     -webkit-transform-origin: none;
   }
 
+  .activeContact:before {
+    transform: none;
+    -webkit-transform: none;
+    transform-origin: none;
+    -webkit-transform-origin: none;
+  }
+
+  .show>ul>li> .activeContact:before{
+    top: 82px;
+  }
+
+
   #contact{
     cursor: pointer;
   }
@@ -158,4 +193,12 @@
   }
   #home{
     cursor: pointer;
+  }
+
+
+  @media (min-width: 576px) { 
+    .contactRef::before{
+      top: 15px;
+    }
+  
   }

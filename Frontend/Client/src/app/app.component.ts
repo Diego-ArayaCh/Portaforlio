@@ -15,7 +15,38 @@ export class AppComponent implements OnInit{
   element: any;
   public spinkit = Spinkit;
   constructor(private router: Router, private session: SessionStorageService) {
-    
+
+
+this.implementTheme();
+
+
+
+
+
+
+
+    $(window).resize(function() {
+      var top_of_element = $("#footer").offset().top;
+      var bottom_of_element = $("#footer").offset().top + $("#footer").outerHeight();
+      var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+      var top_of_screen = $(window).scrollTop();
+      var element = $('.active')
+
+      
+      
+
+      
+      if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+      
+        
+       
+        $("#contact").addClass("activeContact");
+      
+      } else {
+        $("#contact").removeClass("activeContact");
+       
+      }
+  });
     $(window).scroll(function() {
       var top_of_element = $("#footer").offset().top;
       var bottom_of_element = $("#footer").offset().top + $("#footer").outerHeight();
@@ -92,7 +123,32 @@ export class AppComponent implements OnInit{
    
   }
 
-  
+  implementTheme(){
+
+
+  var theme=   this.session.getTheme()
+    if(theme == null){
+      theme = {
+        "primary":"#00b6c0",
+        "fontColor":"#ffffff",
+        "deep":"#272829",
+        "mode": "light"
+      }
+      this.session.saveTheme(theme);
+
+      let root = document.documentElement;
+     
+    root.style.setProperty('--primary', theme.primary)
+    root.style.setProperty('--fontColor', theme.fontColor)
+    root.style.setProperty('--deep', theme.deep)
+    }else{
+      let root = document.documentElement;
+     
+      root.style.setProperty('--primary', theme.primary)
+      root.style.setProperty('--fontColor', theme.fontColor)
+      root.style.setProperty('--deep', theme.deep)
+    }
+  }
   ngOnInit(){
    
     

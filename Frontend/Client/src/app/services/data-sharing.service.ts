@@ -6,8 +6,10 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 })
 export class DataSharingService {
   public sendBtn!: BehaviorSubject<boolean>;
+  public themeBtn: BehaviorSubject<boolean>;
   constructor() {
 
-    this.sendBtn = new BehaviorSubject<boolean>(true)
+    this.sendBtn = new BehaviorSubject<boolean>(true);
+    this.themeBtn = new BehaviorSubject<boolean>(true);
    }
 }

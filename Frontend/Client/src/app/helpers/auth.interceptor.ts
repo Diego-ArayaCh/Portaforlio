@@ -30,7 +30,28 @@ import {
         finalize(() => {
           document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
         $("#contact").removeClass("activeContact");
-       
+        $(window).ready(function() {
+          var top_of_element = $("#footer").offset().top;
+          var bottom_of_element = $("#footer").offset().top + $("#footer").outerHeight();
+          var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+          var top_of_screen = $(window).scrollTop();
+          var element = $('.active')
+    
+          
+          
+    
+          
+          if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+          
+            
+           
+            $("#contact").addClass("activeContact");
+          
+          } else {
+            $("#contact").removeClass("activeContact");
+           
+          }
+      });
       }
 
 
