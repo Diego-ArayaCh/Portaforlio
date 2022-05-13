@@ -11,8 +11,18 @@
 }
 
 
-
-
+.mat-slide-toggle-thumb{
+  background-color: #00b6c0 !important;
+}
+.mat-slide-toggle.mat-warn.mat-checked .mat-slide-toggle-thumb{
+  background-color: #872929 !important;
+}
+.mat-slide-toggle-bar{
+  background-color: #272829 !important;
+}
+.mat-slide-toggle.mat-warn.mat-checked .mat-slide-toggle-bar{
+  background-color: #fff !important;
+}
 
 html,
 body {
@@ -47,3 +57,18 @@ body::-webkit-scrollbar-thumb {
   border-radius: 5px;       /* roundness of the scroll thumb */
   border: 1px rgba(67, 67, 67, 0.614);  /* creates padding around scroll thumb */
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: var(--primary);
+}
+::-webkit-selection {
+  color: #fff;
+  background: var(--primary);
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary);
+}
+

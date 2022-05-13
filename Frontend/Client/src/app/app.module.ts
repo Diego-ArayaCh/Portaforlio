@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './Layouts/nav-bar/nav-bar.component';
 import { FooterComponent } from './Layouts/footer/footer.component';
 import { MainContactComponent } from './Components/Contact/main-contact/main-contact.component';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 //new dependencies
@@ -40,7 +40,8 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    MatSlideToggleModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

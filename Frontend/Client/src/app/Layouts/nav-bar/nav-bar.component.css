@@ -5,8 +5,7 @@
   backdrop-filter: blur(4.8px) !important;
   -webkit-backdrop-filter: blur(4.8px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  transition: all 400ms ease-in!important;
-  -webkit-transition: all 400ms ease-in!important;
+ 
 }
 
 .navbar{
@@ -31,16 +30,11 @@
   justify-content: left;
  
   
-  transition:all 1000ms cubic-bezier(.53,-0.06,.56,1.02);
-  -webkit-transition: all 1000ms cubic-bezier(.53,-0.06,.56,1.02);
+  transition:all 600ms cubic-bezier(.53,-0.06,.56,1.02);
+  -webkit-transition: all 600ms cubic-bezier(.53,-0.06,.56,1.02);
   
 }
-.navbar-expand-sm .navbar-collapse.collapsing {
-   
-  transition: all 200ms ease-in!important;
-  -webkit-transition:  all 200ms ease-in!important;
-   
-  }
+
 
    .navbar-collapse.collapsing {
     opacity: 0.1;
@@ -179,9 +173,7 @@ transition: transform 250ms ease-in;
     -webkit-transform-origin: none;
   }
 
-  .show>ul>li> .activeContact:before{
-    top: 82px;
-  }
+  
 
 
   #contact{
@@ -195,10 +187,56 @@ transition: transform 250ms ease-in;
     cursor: pointer;
   }
 
+  .slide{
+    position: relative;
+    left: 90px;
+    bottom: 60px;
 
+  }
+  .slide::after{
+    position: relative;
+    content:'Dark/Light';
+    font-weight: bolder;
+    font-size: x-small;
+    top:0;
+    left: -5px;
+    color: #fff;
+
+  }
+
+  .mat-slide-toggle.mat-warn.mat-checked .mat-slide-toggle-bar{
+    background-color: var(--deep) !important;
+  }
+  .mat-slide-toggle-bar{
+    background-color: var(--deep) !important;
+  }
+
+  .navbar-dark .navbar-toggler{
+    color: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    padding: 1px 6px;
+  }
   @media (min-width: 576px) { 
     .contactRef::before{
-      top: 15px;
+      top: 10px;
     }
+    .show>ul>li> .contactRef:before{
+      top: -3px;
+    }
+
+
+    .slide{
+      left: -10px;
+    top: 0px;
+    bottom: 0px;
+    }
+    .slide::after{
+     
+      top:0;
+      left: -5px;
+     
   
+    }
   }
+
+ 

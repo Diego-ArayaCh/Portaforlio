@@ -7,9 +7,9 @@
     <layout-footer ></layout-footer>
     <ng-http-loader
     
-    [backdropBackgroundColor]="'#272829'"
+    [backdropBackgroundColor]="dataSharingService.background.value"
         [spinner]="spinkit.skCubeGrid" 
         [opacity]="'1.0'" 
-        [backgroundColor]="'#00b6c0'"
+        [backgroundColor]="dataSharingService.color.value"
     ></ng-http-loader>
 

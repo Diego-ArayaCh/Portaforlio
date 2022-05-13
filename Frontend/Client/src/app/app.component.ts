@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { SessionStorageService } from './services/SessionStorageService';
 import { Spinkit } from 'ng-http-loader';
+import { DataSharingService } from './services/data-sharing.service';
 declare var $: any;
 @Component({
   selector: 'app-root',
@@ -11,13 +12,13 @@ declare var $: any;
 
 export class AppComponent implements OnInit{
   oldActive: any;
-  
+
   element: any;
   public spinkit = Spinkit;
-  constructor(private router: Router, private session: SessionStorageService) {
+  constructor(private router: Router, public dataSharingService: DataSharingService, private session: SessionStorageService) {
 
 
-this.implementTheme();
+
 
 
 
@@ -123,35 +124,10 @@ this.implementTheme();
    
   }
 
-  implementTheme(){
-
-
-  var theme=   this.session.getTheme()
-    if(theme == null){
-      theme = {
-        "primary":"#00b6c0",
-        "fontColor":"#ffffff",
-        "deep":"#272829",
-        "mode": "light"
-      }
-      this.session.saveTheme(theme);
-
-      let root = document.documentElement;
-     
-    root.style.setProperty('--primary', theme.primary)
-    root.style.setProperty('--fontColor', theme.fontColor)
-    root.style.setProperty('--deep', theme.deep)
-    }else{
-      let root = document.documentElement;
-     
-      root.style.setProperty('--primary', theme.primary)
-      root.style.setProperty('--fontColor', theme.fontColor)
-      root.style.setProperty('--deep', theme.deep)
-    }
-  }
+ 
   ngOnInit(){
    
-    
+   
    
   //   $(window).scroll(function() {    
   //     var scroll = $(window).scrollTop();
