@@ -70,7 +70,7 @@ section{
   z-index: 100;
   bottom: -120px;
   display: block;
-  width: 150px;
+  width: 250px;
   background: var(--primary);
   border-radius: 0 10px 10px 0;
 
